@@ -1,0 +1,120 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<!DOCTYPE html>
+<style>
+@media only screen and (min-width:320px) and (max-width:767px){
+	
+}
+@media only screen and (min-width:768px) and (max-width:1023px){
+	
+}
+@media only screen and (min-width:1024px){
+	.headerWrap{
+		width:100%;
+		background: #fff;
+		padding-bottom:10px;
+		height:120px;
+	}
+	.topMenu{
+		width: 1100px;
+		margin: 0 auto;
+		text-align: right;
+		padding-top:10px;
+	}
+	.topMenu > a{
+		font-size:14px;
+		margin-left:10px;
+	}
+	.mainMenu{
+		width:1100px;
+		margin: 0 auto;
+		overflow: hidden;
+	}
+	.logo{
+		float:left;
+		width:240px;
+	}
+	.mainUlWrap{
+		float:right;
+	}
+	.mainUlWrap > ul{
+		width:100%;
+		overflow:hidden;
+	}
+	.mainUlWrap > ul > li{
+		/* display:inline-block; */
+		float:left;
+		margin:0 15px; 
+		line-height: 81px;
+	}
+	.mainUlWrap > ul > li > a{
+		font-size:22px;
+		font-weight:600;
+	}
+	.mainUlWrap > ul > li:hover > a{
+		text-decoration: none;
+		color: #3075ba; /*마우스오버시 자연스럽게*/
+		transition-duration: 300ms;
+		transition-property: color, border-color, background-color;
+		transition-timing-function: ease;
+	}
+	.mainUlWrap > ul > li:last-child:hover > .subUlWrap{
+		display:block; 
+		transition-duration: 300ms;
+		transition-property: display;
+		transition-timing-function: ease;
+	} 
+	.subUlWrap{ 
+		display:none;
+		background: #fff;
+		opacity: 0.8;
+		margin-top:10px;
+	}
+	.subUlWrap > ul > li {
+		text-align: center;
+		line-height: 37px;
+	}
+	.subUlWrap > ul > li > a {
+		font-size:17px;
+	}
+	
+}
+</style>
+<script>
+
+</script>
+<div class="headerWrap">
+	<div class="topMenu">
+		<a href="#none">로그인</a>
+		<a href="#none">회원가입</a>
+	</div>
+	<div class="mainMenu">
+		<img class="logo" src="${pageContext.request.contextPath}/resources/images/logo_test.png">
+		<div class="mainUlWrap">
+			<ul>
+				<li><a href="#none">Our brand</a></li>
+				<li><a href="#none">Product</a></li>
+				<li><a href="#none">Technique</a></li>
+				<li><a href="#none">Information</a></li>
+				<li>
+					<a href="#none">Community</a>
+					<div class="subUlWrap">
+						<ul>
+							<li><a href="#none">공지사항</a></li>
+							<li><a href="#none">FAQ</a></li>
+							<li><a href="#none">Q&A</a></li>
+							<li><a href="#none">Review</a></li>
+							<li><a href="#none">제휴</a></li>
+						</ul>
+					</div>
+				</li>
+				<%-- <li>
+					<img src="${pageContext.request.contextPath}/resources/images/info_icon.png">
+				</li> --%>
+			</ul>
+		</div>
+	</div>
+</div>
