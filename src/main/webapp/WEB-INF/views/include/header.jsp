@@ -92,22 +92,22 @@
 		<a href="#none">회원가입</a>
 	</div>
 	<div class="mainMenu">
-		<img class="logo" src="${pageContext.request.contextPath}/resources/images/logo_test.png">
+		<a href="${pageContext.request.contextPath}/"><img class="logo" src="${pageContext.request.contextPath}/resources/images/logo_test.png"></a>
 		<div class="mainUlWrap">
 			<ul>
-				<li><a href="#none">Our brand</a></li>
-				<li><a href="#none">Product</a></li>
-				<li><a href="#none">Technique</a></li>
-				<li><a href="#none">Information</a></li>
+				<li><a href="${pageContext.request.contextPath}/ourbrand">Our brand</a></li>
+				<li><a href="${pageContext.request.contextPath}/product">Product</a></li>
+				<li><a href="${pageContext.request.contextPath}/technique">Technique</a></li>
+				<li><a href="${pageContext.request.contextPath}/information">Information</a></li>
 				<li>
-					<a href="#none">Community</a>
+					<a href="${pageContext.request.contextPath}/notice">Community</a>
 					<div class="subUlWrap">
 						<ul>
-							<li><a href="#none">공지사항</a></li>
-							<li><a href="#none">FAQ</a></li>
-							<li><a href="#none">Q&A</a></li>
-							<li><a href="#none">Review</a></li>
-							<li><a href="#none">제휴</a></li>
+							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
+							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/qna">Q&A</a></li>
+							<li><a href="${pageContext.request.contextPath}/review">Review</a></li>
+							<li><a href="${pageContext.request.contextPath}/partnership">제휴</a></li>
 						</ul>
 					</div>
 				</li>
