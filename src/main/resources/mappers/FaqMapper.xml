@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.webaid.mappers.FaqMapper">
+
+	<select id="selectAll" resultType="FaqVO">
+		select * from faq order by bno desc
+	</select>
+	
+	<select id="selectOne" resultType="FaqVO">
+		select * from faq where bno=#{bno}
+	</select>
+	
+	<insert id="insert">
+		insert into faq (bno, title, content) values(0, #{title}, #{content})
+	</insert>
+	
+	<update id="update">
+		update faq set title=#{title}, content=#{content} where bno=#{bno}
+	</update>
+	
+	<update id="updateCnt">
+		update faq set cnt=cnt+1 where bno=#{bno}
+	</update>
+	
+	<delete id="delete">
+		delete from faq where bno=#{bno}
+	</delete>
+	
+	<select id="listSearch" resultType="FaqVO">
+		select * from faq <include refid="search"></include> order by bno desc, regdate desc limit #{pageStart},#{perPageNum}  
+	</select>
+	
+	<sql id="search">
+		<if test="searchType=='c'.toString()">
+			where content like concat('%',#{keyword},'%')
+		</if>
+		<if test="searchType=='t'.toString()">
+			where title like concat('%',#{keyword},'%') 
+		</if>
+		<if test="searchType=='r'.toString()">
+			where regdate like concat('%',#{keyword},'%')
+		</if>
+	</sql>
+	
+	<select id="listSearchCount" resultType="int">
+		select count(bno) from faq <include refid="search"></include>
+	</select>
+	
+</mapper>

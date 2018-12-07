@@ -95,8 +95,10 @@
 	.mid_sub_nav_wrap{
 		display:none;
 		clear:both;
-		background: #fff;
+		background: #fefefe;
 		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
 	}
 	.mid_sub_nav_wrap > ul > li{
 		padding-left:20px;

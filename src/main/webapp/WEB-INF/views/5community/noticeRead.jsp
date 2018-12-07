@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Our Brand | 아이핏에스</title>
+<title>공지사항 | 아이핏에스</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,8 +95,10 @@
 	.mid_sub_nav_wrap{
 		display:none; 
 		clear:both;
-		background: #fff;
+		background: #fefefe;
 		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
 	}
 	.mid_sub_nav_wrap > ul > li{
 		padding-left:20px;
@@ -113,14 +115,44 @@
 		width:1024px;
 		margin:20px auto;
 		padding:30px;
-		border-bottom:2px solid lightgray;
+		padding-left:5px;
+		border-bottom:2px solid #3e3e3e;
 	}
 	.content{
 		width:1024px;
 		margin:0 auto;
 	}
-	
-	
+	.content > table{
+		width:100%;
+	}
+	.line{
+		border-top:1px solid lightgray;
+		border-bottom:2px solid #3e3e3e;
+	}
+	.line > td{
+		padding:20px;
+		font-size:16px;
+	}
+	.table_regdate{
+		margin:15px 0 10px 0;
+	}
+	.btnWrap{
+		width:100%;
+		margin: 0 auto;
+	}
+	.listBtn{
+		width:58px;
+		height:40px;
+		margin:20px auto;
+		line-height:36px;
+		border: 2px solid #747474;
+		text-align: center;
+		font-size:16px;
+	}
+	.listBtn > a{
+		width:100%;
+		height:100%;
+	}
 	footer{ 
 		width:100%;
 	}
@@ -128,27 +160,7 @@
 </style>
 <script>
 $(function(){
-	//게시판 검색
-    $("#searchBtn").click(function(){
-    	var s=$("select[name='searchType']").val();
-		var searchType = encodeURIComponent(s);
-		var k=$("input[name='keyword']").val();
-		var keyword = encodeURIComponent(k);
-		location.href="notice${pageMaker.makeQuery(1)}&searchType="+searchType+"&keyword="+keyword;
-	});
 	
-	//익스플로러에서 한글 검색 후 read로 넘어갈 때 인코딩 문제 아래와 같이 해결
-	$(".title > a").click(function(e){
-		e.preventDefault();
-		var bno=$(this).parent().parent().find(".bno").text();
-		var s=$("select[name='searchType']").val();
-		var searchType = encodeURIComponent(s);
-		var k=$("input[name='keyword']").val();
-		var keyword = encodeURIComponent(k);
-		location.href="noticeRead${pageMaker.makeQuery(pageMaker.cri.page)}&searchType="+searchType+"&keyword="+keyword+"&bno="+bno;
-	});
-	
-	$("input[name='keyword']").val("");
 });
 </script>
 </head>
@@ -176,7 +188,7 @@ $(function(){
 					</div>
 				</li>
 				<li>
-					<p>Notice</p>
+					<p>공지사항</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
@@ -194,7 +206,20 @@ $(function(){
 				<h2>공지사항</h2>
 			</div>
 			<div class="content">
-				
+				<table>
+					<tr>
+						<td><h4 class="pl20 pr20">제목 : ${item.title}</h4></td>
+					</tr>
+					<tr>
+						<td><h5 class="pl20 pr20 table_regdate">작성일 : <fmt:formatDate type="date" value="${item.regdate}"/></h5></td>
+					</tr>
+					<tr class="line">
+						<td>${item.content}</td>
+					</tr>
+				</table>
+				<div class="btnWrap">
+					<p class="listBtn"><a href="${pageContext.request.contextPath}/notice${pageMaker.makeSearch(pageMaker.cri.page)}">목 록</a></p>
+				</div>
 			</div><!-- content end -->
 		</div>
 	</section>

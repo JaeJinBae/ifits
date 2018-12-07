@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Our Brand | 아이핏에스</title>
+<title>FAQ | 아이핏에스</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,25 +71,25 @@
 		width:30px;
 		margin-top:18px;
 	}
-	.mid_nav_wrap > ul > li:last-child{
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li){
 		width:210px;
 		font-size:20px;
 		font-weight:600;
 		border-right:1px solid lightgray;
 		overflow:hidden;
 	}
-	.mid_nav_wrap > ul > li:last-child > p{
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > p{
 		float:left;
 		margin-left:20px;
 		font-size:20px;
 		font-weight:600;
 	}
-	.mid_nav_wrap > ul > li:last-child > img{
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > img{
 		width:26px;
 		float:right;
 		margin:22px 21px 0 0; 
 	} 
-	.mid_nav_wrap > ul > li:last-child:hover .mid_sub_nav_wrap{ 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li):hover > .mid_sub_nav_wrap{ 
 		display:block; 
 	}
 	.mid_sub_nav_wrap{
@@ -107,21 +107,52 @@
 	.mid_sub_nav_wrap > ul > li > a{
 		font-size:18px;
 	}
+	/* content */
 	.contentWrap{
-		
+		width:100%;
+	}
+	.content_title{
+		width:1024px;
+		margin:20px auto;
+		padding:30px;
+		padding-left:5px;
+		border-bottom:2px solid #3e3e3e;
 	}
 	.content{
 		width:1024px;
-		height:600px;
 		margin:0 auto;
 	}
+	
+	
 	footer{ 
 		width:100%;
 	}
 }
 </style>
 <script>
-
+$(function(){
+	//게시판 검색
+    $("#searchBtn").click(function(){
+    	var s=$("select[name='searchType']").val();
+		var searchType = encodeURIComponent(s);
+		var k=$("input[name='keyword']").val();
+		var keyword = encodeURIComponent(k);
+		location.href="qna${pageMaker.makeQuery(1)}&searchType="+searchType+"&keyword="+keyword;
+	});
+	
+	//익스플로러에서 한글 검색 후 read로 넘어갈 때 인코딩 문제 아래와 같이 해결
+	$(".title > a").click(function(e){
+		e.preventDefault();
+		var bno=$(this).parent().parent().find(".bno").text();
+		var s=$("select[name='searchType']").val();
+		var searchType = encodeURIComponent(s);
+		var k=$("input[name='keyword']").val();
+		var keyword = encodeURIComponent(k);
+		location.href="qnaRead${pageMaker.makeQuery(pageMaker.cri.page)}&searchType="+searchType+"&keyword="+keyword+"&bno="+bno;
+	});
+	
+	$("input[name='keyword']").val("");
+});
 </script>
 </head>
 <body>
@@ -134,9 +165,9 @@
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>
-				<li><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/homeBtnImg.png"></a></li>
+				<li class="mid_nav_first_li"><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/homeBtnImg.png"></a></li>
 				<li>
-					<p>Our Brand</p>
+					<p>Community</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
@@ -147,13 +178,28 @@
 						</ul>
 					</div>
 				</li>
+				<li>
+					<p>Q&A</p>
+					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
+					<div class="mid_sub_nav_wrap">
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
+							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/review">Review</a></li>
+							<li><a href="${pageContext.request.contextPath}/partnership">제휴</a></li>
+						</ul>
+					</div>
+				</li>
 			</ul>
 		</div>
 		<div class="contentWrap">
+			<div class="content_title">
+				<h2>Q&A</h2>
+			</div>
 			<div class="content">
 				
-			</div>
-		</div>
+			</div><!-- content end -->
+		</div><!-- contentWrap end -->
 	</section>
 	<footer>
 		<jsp:include page="../include/footer.jsp"></jsp:include>

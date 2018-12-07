@@ -95,8 +95,10 @@
 	.mid_sub_nav_wrap{
 		display:none;
 		clear:both;
-		background: #fff;
+		background: #fefefe;
 		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
 	}
 	.mid_sub_nav_wrap > ul > li{
 		padding-left:20px;
@@ -150,7 +152,7 @@
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/notice">Notice</a></li>
+							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
 							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
 							<li><a href="${pageContext.request.contextPath}/qna">Q&A</a></li>
 							<li><a href="${pageContext.request.contextPath}/review">Review</a></li>

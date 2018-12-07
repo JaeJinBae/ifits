@@ -18,6 +18,8 @@
 @media only screen and (min-width:1024px){
 	.footerWrap{
 		width:100%;
+		background: #f7f7f7;
+		padding-top:10px;
 	}
 	.footer_top{
 		width:100%;
@@ -93,11 +95,11 @@
 </script>
 <div class="footerWrap">
 	<div class="footer_top">
-		<a href="#none">Company</a>
+		<a href="${pageContext.request.contextPath}/ourbrand">Company</a>
 		<a href="#none">Agreement</a>
 		<a href="#none">Privacy policy</a>
-		<a href="#none">Product</a>
-		<a href="#none">Technique</a>
+		<a href="${pageContext.request.contextPath}/product">Product</a>
+		<a href="${pageContext.request.contextPath}/technique">Technique</a>
 	</div>
 	<div class="footer_mid">
 		<div class="footer_mid_1">

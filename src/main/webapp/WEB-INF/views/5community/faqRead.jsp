@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 | 아이핏에스</title>
+<title>FAQ | 아이핏에스</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,89 +122,37 @@
 		width:1024px;
 		margin:0 auto;
 	}
-	.tableWrap{
-		width:100%;
-		margin:0 auto;
-	}
-	.tableWrap > table{
-		width:98%;
-		margin:0 auto;
-	}
-	.tableWrap > table tr:first-child{
-		border-bottom:2px solid gray;
-	}
-	.tableWrap > table th{
-		font-size:17px;
-		font-weight:600;
-		padding:12px 5px;
-	}
-	.tableWrap > table tr:first-child th:first-child{
-		width:53px;
-	}
-	.tableWrap > table tr:first-child th:nth-child(2){
+	.content > table{
 		width:100%;
 	}
-	.tableWrap > table tr:first-child th:nth-child(3){
-		width:100px;
+	.line{
+		border-top:1px solid lightgray;
+		border-bottom:2px solid #3e3e3e;
 	}
-	.tableWrap > table tr:first-child th:last-child{
-		width:53px;
+	.line > td{
+		padding:20px;
+		font-size:16px;
 	}
-	.tableWrap > table td{
+	.table_regdate{
+		margin:15px 0 10px 0;
+	}
+	.btnWrap{
+		width:100%;
+		margin: 0 auto;
+	}
+	.listBtn{
+		width:58px;
+		height:40px;
+		margin:20px auto;
+		line-height:36px;
+		border: 2px solid #747474;
 		text-align: center;
 		font-size:16px;
-		padding:10px 5px;
-		border-bottom:1px solid #e3e3e3;
 	}
-	.tableWrap > table tr td:nth-child(2){
-		text-align: left;
-		padding-left:10px;
-		overflow:hidden;
-		white-space:nowrap;
-		text-overflow:ellipsis;
+	.listBtn > a{
+		width:100%;
+		height:100%;
 	}
-	.page{
-		clear:both;
-		width:626px; 
-		margin:70px auto;
-		margin-bottom:50px;
-	}
-	.page > ul{
-		text-align: center;
-	}
-	.page ul li{
-		width:45px;
-		height:40px;
-		margin:0 auto;
-		list-style: none;
-		display: inline-block;
-		text-align:center;
-		border:1px solid #e9e9e9;
-	}
-	.active1{
-		border:2px solid skyblue !important;
-	}
-	.active2{
-		font-weight: bold;
-	}
-	.page ul li a{
-		font-size:1.1em;
-		line-height: 40px;
-	}
-	#searchBtn{
-		width:50px;
-		height:24px;
-		background: #5c4530;
-		color:white;
-		border:none;
-		border-radius: 3px;
-		font-size:15px;
-	}
-	.searchWrap{
-		text-align: center;
-		margin-bottom:50px;
-	}
-	
 	footer{ 
 		width:100%;
 	}
@@ -260,11 +208,11 @@ $(function(){
 					</div>
 				</li>
 				<li>
-					<p>공지사항</p>
+					<p>FAQ</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
+							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
 							<li><a href="${pageContext.request.contextPath}/qna">Q&A</a></li>
 							<li><a href="${pageContext.request.contextPath}/review">Review</a></li>
 							<li><a href="${pageContext.request.contextPath}/partnership">제휴</a></li>
@@ -272,67 +220,28 @@ $(function(){
 					</div>
 				</li>
 			</ul>
-		</div>
+		</div><!-- mid_nav_wrap -->
 		<div class="contentWrap">
 			<div class="content_title">
-				<h2>공지사항</h2>
+				<h2>FAQ</h2>
 			</div>
 			<div class="content">
-				<div class="tableWrap">
-					<table>
-						<tr>
-							<th>NO</th>
-							<th>제목</th>
-							<th>등록일</th>
-							<th>조회</th>
-						</tr>
-						<c:choose> 
-					    <c:when test="${fn:length(list) == 0}">
-				        	<tr>
-				        		<td colspan="5" style=" text-align: center;">등록된 게시물이 없습니다.</td>
-				        	</tr>
-					    </c:when>
-					    <c:otherwise>
-					        <c:forEach var="item" items="${list}">
-								<tr>
-									<td class="bno">${item.bno}</td>
-									<td class="title"><a href="${pageContext.request.contextPath}/noticeRead${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${item.bno}">${item.title}</a></td>
-									<td><fmt:formatDate type="date" value="${item.regdate}"/></td>
-									<td>${item.cnt}</td>
-								</tr>	
-							</c:forEach>
-					    </c:otherwise> 
-					</c:choose>
-					</table>
-					<div class="page">
-						<ul>
-							<c:if test="${pageMaker.prev}">
-								<li><a href="${pageMaker.makeSearch(pageMaker.startPage-1) }">&laquo;</a></li>
-							</c:if>
-							
-							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-								<li ${pageMaker.cri.page == idx? 'class=active1':''}><a href="${pageMaker.makeSearch(idx)}" ${pageMaker.cri.page == idx? 'class=active2':''}>${idx}</a></li>
-							</c:forEach>
-							
-							<c:if test="${pageMaker.next}">
-								<li><a href="${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a></li>
-							</c:if>
-							
-						</ul>
-					</div><!-- page end -->
-					<div class="searchWrap">
-						<select name="searchType">
-							<option value="n">선택해주세요.</option>
-							<option value="t" ${cri.searchType=='t'?'selected':''}>제목</option>
-							<option value="c" ${cri.searchType=='c'?'selected':''}>내용</option>
-							<option value="r" ${cri.searchType=='r'?'selected':''}>작성일</option>
-						</select> 
-						<input type="text" name="keyword" id="keywordInput" value="${cri.keyword}">
-						<button id="searchBtn">검색</button>
-					</div>
-				</div><!-- tableWrap end -->
+				<table>
+					<tr>
+						<td><h4 class="pl20 pr20">제목 : ${item.title}</h4></td>
+					</tr>
+					<tr>
+						<td><h5 class="pl20 pr20 table_regdate">작성일 : <fmt:formatDate type="date" value="${item.regdate}"/></h5></td>
+					</tr>
+					<tr class="line">
+						<td>${item.content}</td>
+					</tr>
+				</table>
+				<div class="btnWrap">
+					<p class="listBtn"><a href="${pageContext.request.contextPath}/faq${pageMaker.makeSearch(pageMaker.cri.page)}">목 록</a></p>
+				</div>
 			</div><!-- content end -->
-		</div><!-- contentWrap end -->
+		</div>
 	</section>
 	<footer>
 		<jsp:include page="../include/footer.jsp"></jsp:include>

@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>공지사항 | 아이핏에스</title>
+<title>FAQ | 아이핏에스</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -93,7 +93,7 @@
 		display:block; 
 	}
 	.mid_sub_nav_wrap{
-		display:none; 
+		display:none;
 		clear:both;
 		background: #fefefe;
 		border-bottom:1px solid lightgray;
@@ -126,83 +126,72 @@
 		width:100%;
 		margin:0 auto;
 	}
-	.tableWrap > table{
-		width:98%;
+	.custom{
+		width:95%;
 		margin:0 auto;
 	}
-	.tableWrap > table tr:first-child{
-		border-bottom:2px solid gray;
-	}
-	.tableWrap > table th{
-		font-size:17px;
-		font-weight:600;
-		padding:12px 5px;
-	}
-	.tableWrap > table tr:first-child th:first-child{
-		width:53px;
-	}
-	.tableWrap > table tr:first-child th:nth-child(2){
+	.custom > table{
 		width:100%;
-	}
-	.tableWrap > table tr:first-child th:nth-child(3){
-		width:100px;
-	}
-	.tableWrap > table tr:first-child th:last-child{
-		width:53px;
-	}
-	.tableWrap > table td{
-		text-align: center;
-		font-size:16px;
-		padding:10px 5px;
-		border-bottom:1px solid #e3e3e3;
-	}
-	.tableWrap > table tr td:nth-child(2){
-		text-align: left;
-		padding-left:10px;
-		overflow:hidden;
-		white-space:nowrap;
-		text-overflow:ellipsis;
-	}
-	.page{
-		clear:both;
-		width:626px; 
-		margin:70px auto;
-		margin-bottom:50px;
-	}
-	.page > ul{
-		text-align: center;
-	}
-	.page ul li{
-		width:45px;
-		height:40px;
 		margin:0 auto;
-		list-style: none;
-		display: inline-block;
-		text-align:center;
-		border:1px solid #e9e9e9;
+		border-top:5px solid #e3e3e3;
+		border-bottom:5px solid #e3e3e3;
+		text-align:left;
 	}
-	.active1{
-		border:2px solid skyblue !important;
+	.custom > table td{
+		padding:10px 15px;
+		font-size:14px;
 	}
-	.active2{
-		font-weight: bold;
+	.custom>table tr:first-child td{
+		border-bottom:2px solid #e3e3e3;
+		font-size:22px;
 	}
-	.page ul li a{
-		font-size:1.1em;
-		line-height: 40px;
+	.customContent{
+		width:100%;
+		margin:0 auto;
+		padding:20px 15px;
+		text-align: left;
 	}
-	#searchBtn{
+	.btnWrap{
+		margin-top:50px;
+		text-align: right;
+	}
+	.btnWrap button{
 		width:50px;
 		height:24px;
-		background: #5c4530;
+		background: #5f5f5f;
 		color:white;
 		border:none;
 		border-radius: 3px;
 		font-size:15px;
 	}
-	.searchWrap{
-		text-align: center;
-		margin-bottom:50px;
+	.reply{
+		width:95%;
+		margin:100px auto;
+	}
+	.reply > table{
+		width:100%;
+		margin:0 auto;
+		border-top:5px solid #e3e3e3;
+		border-bottom:5px solid #e3e3e3;
+		text-align:left;
+	}
+	.reply > table td{
+		padding:10px 15px;
+		font-size:14px;
+	}
+	.reply > table tr:first-child td{
+		border-bottom:2px solid #e3e3e3;
+		font-size:22px;
+	}
+	.replyContent{
+		width:100%;
+		max-width:970px;
+		margin:0 auto;
+		padding:20px 15px;
+		text-align: left;
+	}
+	.replyContent img{
+		max-width:1000px;
 	}
 	
 	footer{ 
@@ -212,27 +201,7 @@
 </style>
 <script>
 $(function(){
-	//게시판 검색
-    $("#searchBtn").click(function(){
-    	var s=$("select[name='searchType']").val();
-		var searchType = encodeURIComponent(s);
-		var k=$("input[name='keyword']").val();
-		var keyword = encodeURIComponent(k);
-		location.href="notice${pageMaker.makeQuery(1)}&searchType="+searchType+"&keyword="+keyword;
-	});
 	
-	//익스플로러에서 한글 검색 후 read로 넘어갈 때 인코딩 문제 아래와 같이 해결
-	$(".title > a").click(function(e){
-		e.preventDefault();
-		var bno=$(this).parent().parent().find(".bno").text();
-		var s=$("select[name='searchType']").val();
-		var searchType = encodeURIComponent(s);
-		var k=$("input[name='keyword']").val();
-		var keyword = encodeURIComponent(k);
-		location.href="noticeRead${pageMaker.makeQuery(pageMaker.cri.page)}&searchType="+searchType+"&keyword="+keyword+"&bno="+bno;
-	});
-	
-	$("input[name='keyword']").val("");
 });
 </script>
 </head>
@@ -260,12 +229,12 @@ $(function(){
 					</div>
 				</li>
 				<li>
-					<p>공지사항</p>
+					<p>Q&A</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
+							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
 							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
-							<li><a href="${pageContext.request.contextPath}/qna">Q&A</a></li>
 							<li><a href="${pageContext.request.contextPath}/review">Review</a></li>
 							<li><a href="${pageContext.request.contextPath}/partnership">제휴</a></li>
 						</ul>
@@ -275,62 +244,52 @@ $(function(){
 		</div>
 		<div class="contentWrap">
 			<div class="content_title">
-				<h2>공지사항</h2>
+				<h2>Q&A</h2>
 			</div>
 			<div class="content">
 				<div class="tableWrap">
-					<table>
-						<tr>
-							<th>NO</th>
-							<th>제목</th>
-							<th>등록일</th>
-							<th>조회</th>
-						</tr>
-						<c:choose> 
-					    <c:when test="${fn:length(list) == 0}">
-				        	<tr>
-				        		<td colspan="5" style=" text-align: center;">등록된 게시물이 없습니다.</td>
-				        	</tr>
-					    </c:when>
-					    <c:otherwise>
-					        <c:forEach var="item" items="${list}">
+					<div class="custom">
+						<table>
+							<tr>
+								<td colspan="4">제목: ${item.title}</td>
+							</tr>
+							<tr>
+								<td>작성자: ${item.writer}</td>
+								<td>등록일: <fmt:formatDate type="date" value="${item.regdate}"/>
+								<td>답변상태: ${item.state}</td>
+								<td>조회: ${item.cnt}</td>
+							</tr>
+						</table>
+						<div class="customContent">
+							${item.content}
+						</div>
+						<div class="btnWrap">
+							<a href="${pageContext.request.contextPath}/qna${pageMaker.makeSearch(pageMaker.cri.page)}" class="btn"><button>목록</button></a>
+							<c:if test="${item.pwtype=='x'}">
+								<a href="${pageContext.request.contextPath}/qnaUpdate${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${item.bno}"><button>수정</button></a>
+								<a href="${pageContext.request.contextPath}/qnaDelete${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${item.bno}"><button>삭제</button></a>
+							</c:if>
+						</div>
+					</div><!-- custom end -->
+					<div class="reply">
+						<c:if test="${item.state=='완료'}">
+							<table>
 								<tr>
-									<td class="bno">${item.bno}</td>
-									<td class="title"><a href="${pageContext.request.contextPath}/noticeRead${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${item.bno}">${item.title}</a></td>
-									<td><fmt:formatDate type="date" value="${item.regdate}"/></td>
-									<td>${item.cnt}</td>
-								</tr>	
-							</c:forEach>
-					    </c:otherwise> 
-					</c:choose>
-					</table>
-					<div class="page">
-						<ul>
-							<c:if test="${pageMaker.prev}">
-								<li><a href="${pageMaker.makeSearch(pageMaker.startPage-1) }">&laquo;</a></li>
-							</c:if>
-							
-							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
-								<li ${pageMaker.cri.page == idx? 'class=active1':''}><a href="${pageMaker.makeSearch(idx)}" ${pageMaker.cri.page == idx? 'class=active2':''}>${idx}</a></li>
-							</c:forEach>
-							
-							<c:if test="${pageMaker.next}">
-								<li><a href="${pageMaker.makeSearch(pageMaker.endPage+1)}">&raquo;</a></li>
-							</c:if>
-							
-						</ul>
-					</div><!-- page end -->
-					<div class="searchWrap">
-						<select name="searchType">
-							<option value="n">선택해주세요.</option>
-							<option value="t" ${cri.searchType=='t'?'selected':''}>제목</option>
-							<option value="c" ${cri.searchType=='c'?'selected':''}>내용</option>
-							<option value="r" ${cri.searchType=='r'?'selected':''}>작성일</option>
-						</select> 
-						<input type="text" name="keyword" id="keywordInput" value="${cri.keyword}">
-						<button id="searchBtn">검색</button>
-					</div>
-				</div><!-- tableWrap end -->
+									<td colspan="4">제목: Re] ${item.title}</td>
+								</tr>
+								<tr>
+									<td>작성자: 관리자</td>
+									<td>답변일: <fmt:formatDate type="date" value="${reply.regdate}"/></td>
+									<td></td>
+									<td></td>
+								</tr>
+							</table>
+						<div class="replyContent">
+							${reply.replytext}
+						</div>
+						</c:if>				
+					</div><!-- reply end -->
+				</div><!-- tableWrap -->
 			</div><!-- content end -->
 		</div><!-- contentWrap end -->
 	</section>
