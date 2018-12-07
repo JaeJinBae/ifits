@@ -175,7 +175,7 @@
 	.btnWrap button{
 		width:50px;
 		height:24px;
-		background: #453534;
+		background: #5f5f5f;
 		color:white;
 		border:none;
 		border-radius: 3px;
@@ -187,7 +187,7 @@
 	.btnWrap .submitBtn{
 		width:50px;
 		height:24px;
-		background: #453534;
+		background: #5f5f5f;
 		color:white;
 		border:none;
 		border-radius: 3px;
