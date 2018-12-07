@@ -172,6 +172,24 @@
 	.title>img{
 		width:16px;
 	}
+	.writeBtn{
+		width:100%;
+		text-align: right;
+		margin-top:20px;
+		padding:0 30px;
+	}
+	.writeBtn > a{
+		display:inline-block;
+		width:50px;
+		height:24px;
+		background: #5f5f5f;
+		color:white;
+		border:none;
+		border-radius: 3px;
+		font-size:15px;
+		text-align: center;
+		line-height: 24px;
+	}
 	.page{
 		clear:both;
 		width:626px; 
@@ -322,6 +340,7 @@ $(function(){
 					    </c:otherwise> 
 					</c:choose>
 					</table>
+					<p class="writeBtn"><a href="${pageContext.request.contextPath}/qnaRegister${pageMaker.makeSearch(pageMaker.cri.page)}">글쓰기</a></p>
 					<div class="page">
 						<ul>
 							<c:if test="${pageMaker.prev}">

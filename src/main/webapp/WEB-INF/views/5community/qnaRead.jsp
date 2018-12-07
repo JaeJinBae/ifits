@@ -265,7 +265,7 @@ $(function(){
 						</div>
 						<div class="btnWrap">
 							<a href="${pageContext.request.contextPath}/qna${pageMaker.makeSearch(pageMaker.cri.page)}" class="btn"><button>목록</button></a>
-							<c:if test="${item.pwtype=='x'}">
+							<c:if test="${item.pwtype=='o'}">
 								<a href="${pageContext.request.contextPath}/qnaUpdate${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${item.bno}"><button>수정</button></a>
 								<a href="${pageContext.request.contextPath}/qnaDelete${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${item.bno}"><button>삭제</button></a>
 							</c:if>

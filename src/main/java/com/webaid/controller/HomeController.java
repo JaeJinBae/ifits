@@ -227,6 +227,9 @@ public class HomeController {
 	@RequestMapping(value = "/qnaRegister", method = RequestMethod.POST)
 	public String qnaRegisterPost(QnaVO vo) {
 		logger.info("qnaRegister post");
+		
+		logger.info(vo.toString());
+		
 		qService.insert(vo);
 		
 		return "redirect:/qna";

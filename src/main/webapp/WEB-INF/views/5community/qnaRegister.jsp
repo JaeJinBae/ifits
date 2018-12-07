@@ -10,6 +10,7 @@
 <title>FAQ | 아이핏에스</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/ckeditorBasic/ckeditor.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @media only screen and (min-width:320px) and (max-width:767px){
@@ -122,7 +123,81 @@
 		width:1024px;
 		margin:0 auto;
 	}
-	
+	.tableWrap{
+		width:100%;
+		margin:0 auto;
+	}
+	.tableWrap #f1{ 
+		width:95%;
+		max-width:1000px;
+		margin:0 auto;
+	}
+	.tableWrap #f1 table{
+		width:100%;
+		border-top:5px solid #e3e3e3;
+	}
+	#f1 table tr td{
+		font-size:14px;
+		border-bottom:1px solid #e3e3e3;
+		padding:10px 0;
+	}
+	#f1 table tr td:first-child{
+		width:8%;
+		text-align: right;
+	}
+	#f1 table tr td:nth-child(2){
+		width:70%;
+		text-align: left;
+		padding-left:30px;
+	}
+	#f1 table tr:nth-child(4) td:last-child input{
+		width:600px;
+	}
+	#f1 table tr:last-child td{
+		padding-top:20px;
+	}
+	.star{
+		color:#0b8783;
+		/* font-size:20px; */
+	}
+	.stick{
+		margin-left:10px;
+		color:lightgray;
+	}
+	.warn{
+		margin-left:15px;
+	}
+	.btnWrap{
+		width:100%;
+		margin-top:10px;
+		margin-bottom:50px;
+		text-align: center;
+	}
+	.btnWrap button{
+		width:50px;
+		height:24px;
+		background: #5f5f5f;
+		color:white;
+		border:none;
+		border-radius: 3px;
+		font-size:15px;
+	}
+	.btnWrap .goListBtn>button{
+		width:50px;
+	}
+	.btnWrap .submitBtn{
+		width:50px;
+		height:24px;
+		background: #5f5f5f;
+		color:white;
+		border:none;
+		border-radius: 3px;
+		font-size:15px;
+		cursor:pointer;
+	}
+	.btnWrap .cancelBtn>button{
+		width:50px;
+	}
 	
 	footer{ 
 		width:100%;
@@ -131,27 +206,32 @@
 </style>
 <script>
 $(function(){
-	//게시판 검색
-    $("#searchBtn").click(function(){
-    	var s=$("select[name='searchType']").val();
-		var searchType = encodeURIComponent(s);
-		var k=$("input[name='keyword']").val();
-		var keyword = encodeURIComponent(k);
-		location.href="qna${pageMaker.makeQuery(1)}&searchType="+searchType+"&keyword="+keyword;
-	});
-	
-	//익스플로러에서 한글 검색 후 read로 넘어갈 때 인코딩 문제 아래와 같이 해결
-	$(".title > a").click(function(e){
-		e.preventDefault();
-		var bno=$(this).parent().parent().find(".bno").text();
-		var s=$("select[name='searchType']").val();
-		var searchType = encodeURIComponent(s);
-		var k=$("input[name='keyword']").val();
-		var keyword = encodeURIComponent(k);
-		location.href="qnaRead${pageMaker.makeQuery(pageMaker.cri.page)}&searchType="+searchType+"&keyword="+keyword+"&bno="+bno;
-	});
-	
-	$("input[name='keyword']").val("");
+    //공개여부
+    $("input[name='pwtype']").change(function(){
+    	if($(this).val()=="x"){
+    		$("input[name='pw']").val("");
+    		$("input[name='pw']").attr("readonly",true);
+    	}else{
+    		$("input[name='pw']").attr("readonly",false);
+    	}
+    })
+    //예외처리
+	$("#f1").submit(function(){
+		var pwtype = $("input[name='pwtype']:checked").val();
+		if(pwtype=="o"){
+			if($("input[name='pw']").val()==""||$("input[name='pw']").val()==null){
+				alert("비밀번호를 입력해주세요.");
+				return false;
+			}
+		}else if($("input[name='writer']").val()==""||$("input[name='writer']").val()==null){
+			alert("작성자를 입력해주세요.");
+			return false;
+		}else if($("input[name='title']").val()==""||$("input[name='title']").val()==null){
+			alert("제목을 입력해주세요.");
+			return false;
+		}
+		
+	})
 });
 </script>
 </head>
@@ -197,7 +277,43 @@ $(function(){
 				<h2>Q&A</h2>
 			</div>
 			<div class="content">
-				
+				<div class="tableWrap">
+					<form id="f1" method="post" action="qnaRegister">
+						<table>
+							<tr>
+								<td><span class="star">*</span> 공개여부<span class="stick">|</span></td>
+								<td>
+									<input type="radio" name="pwtype" value="x">공개 &nbsp;&nbsp;
+									<input type="radio" name="pwtype" value="o" checked="checked">비공개
+								</td>
+							</tr>
+							<tr>
+								<td><span class="star">*</span> 비밀번호<span class="stick">|</span></td>
+								<td><input type="password" name="pw" style="width:150px;"><span class="warn">※ 비공개 선택 시 비밀번호는 필수 입니다.</span></td> 
+							</tr>
+							<tr>
+								<td><span class="star">*</span> 작성자<span class="stick">|</span></td>
+								<td><input type="text" name="writer" style="width:150px;"></td>
+							</tr>
+							<tr>
+								<td><span class="star">*</span> 제목<span class="stick">|</span></td>
+								<td><input type="text" name="title"></td>
+							</tr>
+							<tr>
+								<td colspan="2">
+									<textarea id="editor1" name="content"></textarea>
+									<script>
+										CKEDITOR.replace('content',{filebrowserUploadUrl:"${pageContext.request.contextPath}/admin/imgUpload"});
+									</script>
+								</td>
+							</tr>
+						</table>
+						<div class="btnWrap">
+							<input type="submit" value="등록" class="submitBtn" id="registerBtn">
+							<a href="${pageContext.request.contextPath}/qna${pageMaker.makeSearch(pageMaker.cri.page)}" class="cancelBtn"><button type="button">취소</button></a>
+						</div>
+					</form>
+				</div><!-- tableWrap end -->
 			</div><!-- content end -->
 		</div><!-- contentWrap end -->
 	</section>
