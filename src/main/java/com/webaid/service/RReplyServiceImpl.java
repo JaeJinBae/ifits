@@ -3,32 +3,33 @@ package com.webaid.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.webaid.domain.ReplyVO;
+import com.webaid.domain.RReplyVO;
 import com.webaid.persistence.QnaDao;
-import com.webaid.persistence.ReplyDao;
+import com.webaid.persistence.RReplyDao;
+import com.webaid.persistence.ReviewDao;
 
 @Service
-public class ReplyServiceImpl implements ReplyService {
+public class RReplyServiceImpl implements RReplyService {
 
 	@Autowired
-	private ReplyDao dao;
+	private RReplyDao dao;
 	
 	@Autowired
-	private QnaDao QnaDao;
+	private ReviewDao reviewDao;
 
 	@Override
-	public ReplyVO select(int bno) throws Exception {
+	public RReplyVO select(int bno) throws Exception {
 		return dao.select(bno);
 	}
 
 	@Override
-	public void insert(ReplyVO vo) throws Exception {
+	public void insert(RReplyVO vo) throws Exception {
 		dao.insert(vo);
-		QnaDao.updateState(vo.getBno());
+		reviewDao.updateState(vo.getBno());
 	}
 
 	@Override
-	public void update(ReplyVO vo) throws Exception {
+	public void update(RReplyVO vo) throws Exception {
 		dao.update(vo);
 	}
 

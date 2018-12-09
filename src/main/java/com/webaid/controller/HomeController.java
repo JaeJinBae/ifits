@@ -32,16 +32,24 @@ import com.webaid.domain.FaqVO;
 import com.webaid.domain.InformationVO;
 import com.webaid.domain.MemberVO;
 import com.webaid.domain.NoticeVO;
+import com.webaid.domain.PReplyVO;
 import com.webaid.domain.PageMaker;
+import com.webaid.domain.PartnershipVO;
+import com.webaid.domain.QReplyVO;
 import com.webaid.domain.QnaVO;
-import com.webaid.domain.ReplyVO;
+import com.webaid.domain.RReplyVO;
+import com.webaid.domain.ReviewVO;
 import com.webaid.domain.SearchCriteria;
 import com.webaid.service.FaqService;
 import com.webaid.service.InformationService;
 import com.webaid.service.MemberService;
 import com.webaid.service.NoticeService;
+import com.webaid.service.PReplyService;
+import com.webaid.service.PartnershipService;
+import com.webaid.service.QReplyService;
 import com.webaid.service.QnaService;
-import com.webaid.service.ReplyService;
+import com.webaid.service.RReplyService;
+import com.webaid.service.ReviewService;
 
 /**
  * Handles requests for the application home page.
@@ -50,6 +58,9 @@ import com.webaid.service.ReplyService;
 public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	
+	@Autowired
+	private MemberService mService;
 	
 	@Autowired
 	private NoticeService nService;
@@ -64,10 +75,19 @@ public class HomeController {
 	private QnaService qService;
 	
 	@Autowired
-	private ReplyService rService;
+	private QReplyService qReplyService;
 	
 	@Autowired
-	private MemberService mService;
+	private ReviewService rService;
+	
+	@Autowired
+	private RReplyService rReplyService;
+	
+	@Autowired
+	private PartnershipService pService;
+	
+	@Autowired
+	private PReplyService pReplyService;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -505,7 +525,7 @@ public class HomeController {
 			
 			qService.updateCnt(bno);
 			
-			ReplyVO rvo=rService.select(bno);
+			QReplyVO rvo=qReplyService.select(bno);
 			
 			model.addAttribute("reply", rvo);
 			
@@ -549,7 +569,7 @@ public class HomeController {
 		qService.updateCnt(bno);
 		
 		QnaVO vo=qService.selectOne(bno);
-		ReplyVO rvo=rService.select(bno);
+		QReplyVO rvo=qReplyService.select(bno);
 		
 		cri.setKeyword(null);
 		
@@ -612,19 +632,350 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/review", method = RequestMethod.GET)
-	public String review() {
+	public String review(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		logger.info("community_review GET");
 		
+		List<ReviewVO> list = rService.listSearch(cri);
+		logger.info(cri.getKeyword());
+		
+		cri.setKeyword(null);
+		cri.setSearchType("n");
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(rService.listSearchCount(cri));
+		 
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", pageMaker);
 		
 		return "5community/review";
 	}
 	
+	@RequestMapping(value = "/reviewRegister", method = RequestMethod.GET)
+	public String reviewRegisterGet(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("review Register Get");
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(rService.listSearchCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "5community/reviewRegister";
+	}
+	
+	@RequestMapping(value = "/reviewRegister", method = RequestMethod.POST)
+	public String reviewRegisterPost(ReviewVO vo) {
+		logger.info("review Register post");
+		
+		logger.info(vo.toString());
+		
+		rService.insert(vo);
+		
+		return "redirect:/review";
+	}
+	
+	@RequestMapping(value = "/reviewPwType", method = RequestMethod.GET)
+	public String reviewPWcheck(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("review PWcheck Get");
+		
+		ReviewVO vo=rService.selectOne(bno);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(rService.listSearchCount(cri));
+		
+		model.addAttribute("item", vo);
+		model.addAttribute("pageMaker", pageMaker);
+		
+		String pwtype=vo.getPwtype();
+		
+		if(pwtype.equals("x")){
+			logger.info("go Read");
+			
+			rService.updateCnt(bno);
+			
+			RReplyVO rvo=rReplyService.select(bno);
+			
+			model.addAttribute("reply", rvo);
+			
+			return "5community/reviewRead";
+		}
+		
+		return "5community/reviewPwCheck";
+	}
+	
+	@RequestMapping(value = "/reviewPWcheck2", method = RequestMethod.POST)
+	public ResponseEntity<String> reviewPWCheckPost(@RequestBody QnaVO voo) {
+		logger.info("review PWcheck post");
+		
+		ResponseEntity<String> entity=null;
+		try{
+			ReviewVO vo=rService.selectOne(voo.getBno());
+			String realPW=vo.getPw();
+			
+			if(realPW.equals(voo.getPw())){
+				logger.info("패스워드 맞음");
+				entity=new ResponseEntity<String>("ok",HttpStatus.OK);
+				return entity;
+			}else{
+				logger.info("패스워드 틀림");
+				entity=new ResponseEntity<String>("no",HttpStatus.OK);
+				return entity;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<String>("no",HttpStatus.BAD_REQUEST);
+			
+		}
+		
+		return entity;
+	}
+	
+	@RequestMapping(value="/reviewRead")
+	public String reviewRead(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("review Read GET");
+		
+		rService.updateCnt(bno);
+		
+		ReviewVO vo=rService.selectOne(bno);
+		RReplyVO rvo=rReplyService.select(bno);
+		
+		cri.setKeyword(null);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(rService.listSearchCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		
+		model.addAttribute("item",vo);
+		model.addAttribute("reply", rvo);
+		
+		return "5community/reviewRead";
+	}
+	
+	@RequestMapping(value="/reviewUpdate", method=RequestMethod.GET)
+	public String reviewUpdateGet(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("review Update");
+		
+		ReviewVO vo=rService.selectOne(bno);
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(rService.listSearchCount(cri));
+		
+		
+		model.addAttribute("item",vo);
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "5community/reviewUpdate";
+	}
+	
+	@RequestMapping(value="/reviewUpdate", method=RequestMethod.POST)
+	public String reviewUpdatePost(ReviewVO vo, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
+		logger.info("review Update Post");
+		
+		rService.update(vo);
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		pageMaker.setCri(cri);
+		
+		return "redirect:/reviewRead"+pageMaker.makeSearch(cri.getPage())+"&bno="+vo.getBno();
+	}
+	
+	@RequestMapping(value="/reviewDelete")
+	public String reviewDelete(int bno, @ModelAttribute("cri") SearchCriteria cri) throws Exception{
+		logger.info("review Delete");
+		rService.delete(bno);
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		pageMaker.setCri(cri);
+		
+		return "redirect:/review"+pageMaker.makeSearch(cri.getPage());
+	}
+	
+	
 	@RequestMapping(value = "/partnership", method = RequestMethod.GET)
-	public String partnership() {
+	public String partnership(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
 		logger.info("community_partnership GET");
 		
+		List<PartnershipVO> list = pService.listSearch(cri);
+		logger.info(cri.getKeyword());
+		
+		cri.setKeyword(null);
+		cri.setSearchType("n");
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+		 
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", pageMaker);
 		
 		return "5community/partnership";
+	}
+	
+	@RequestMapping(value = "/partnershipRegister", method = RequestMethod.GET)
+	public String partnershipRegisterGet(@ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("partnership Register Get");
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "5community/partnershipRegister";
+	}
+	
+	@RequestMapping(value = "/partnershipRegister", method = RequestMethod.POST)
+	public String partnershipRegisterPost(PartnershipVO vo) {
+		logger.info("partnership Register post");
+		
+		logger.info(vo.toString());
+		
+		pService.insert(vo);
+		
+		return "redirect:/partnership";
+	}
+	
+	@RequestMapping(value = "/partnershipPwType", method = RequestMethod.GET)
+	public String partnershipPWcheck(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("qnaPWcheck Get");
+		
+		PartnershipVO vo=pService.selectOne(bno);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+		
+		model.addAttribute("item", vo);
+		model.addAttribute("pageMaker", pageMaker);
+		
+		String pwtype=vo.getPwtype();
+		
+		if(pwtype.equals("x")){
+			logger.info("go Read");
+			
+			pService.updateCnt(bno);
+			
+			PReplyVO rvo=pReplyService.select(bno);
+			
+			model.addAttribute("reply", rvo);
+			
+			return "5community/partnershipRead";
+		}
+		
+		return "5community/partnershipPwCheck";
+	}
+	
+	@RequestMapping(value = "/partnershipPWcheck2", method = RequestMethod.POST)
+	public ResponseEntity<String> partnershipPWCheckPost(@RequestBody QnaVO voo) {
+		logger.info("partnership PWcheck post");
+		
+		ResponseEntity<String> entity=null;
+		try{
+			PartnershipVO vo=pService.selectOne(voo.getBno());
+			String realPW=vo.getPw();
+			
+			if(realPW.equals(voo.getPw())){
+				logger.info("패스워드 맞음");
+				entity=new ResponseEntity<String>("ok",HttpStatus.OK);
+				return entity;
+			}else{
+				logger.info("패스워드 틀림");
+				entity=new ResponseEntity<String>("no",HttpStatus.OK);
+				return entity;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<String>("no",HttpStatus.BAD_REQUEST);
+			
+		}
+		
+		return entity;
+	}
+	
+	@RequestMapping(value="/partnershipRead")
+	public String partnershipRead(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("partnership Read GET");
+		
+		pService.updateCnt(bno);
+		
+		PartnershipVO vo=pService.selectOne(bno);
+		PReplyVO rvo=pReplyService.select(bno);
+		
+		cri.setKeyword(null);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
+		
+		model.addAttribute("item",vo);
+		model.addAttribute("reply", rvo);
+		
+		return "5community/partnershipRead";
+	}
+	
+	@RequestMapping(value="/partnershipUpdate", method=RequestMethod.GET)
+	public String partnershipUpdateGet(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception {
+		logger.info("partnership Update");
+		
+		PartnershipVO vo=pService.selectOne(bno);
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+		
+		
+		model.addAttribute("item",vo);
+		model.addAttribute("pageMaker", pageMaker);
+		
+		return "5community/partnershipUpdate";
+	}
+	
+	@RequestMapping(value="/partnershipUpdate", method=RequestMethod.POST)
+	public String partnershipUpdatePost(PartnershipVO vo, @ModelAttribute("cri") SearchCriteria cri, Model model) throws Exception{
+		logger.info("partnership Update Post");
+		
+		pService.update(vo);
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		pageMaker.setCri(cri);
+		
+		return "redirect:/partnershipRead"+pageMaker.makeSearch(cri.getPage())+"&bno="+vo.getBno();
+	}
+	
+	@RequestMapping(value="/partnershipDelete")
+	public String partnershipDelete(int bno, @ModelAttribute("cri") SearchCriteria cri) throws Exception{
+		logger.info("partnershipDelete");
+		pService.delete(bno);
+		
+		PageMaker pageMaker = new PageMaker();
+		
+		pageMaker.setCri(cri);
+		
+		return "redirect:/partnership"+pageMaker.makeSearch(cri.getPage());
 	}
 	
 }

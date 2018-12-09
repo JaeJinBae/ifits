@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제휴 | 아이핏에스</title>
+<title>Review | 아이핏에스</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -245,7 +245,7 @@ $(function(){
 		var searchType = encodeURIComponent(s);
 		var k=$("input[name='keyword']").val();
 		var keyword = encodeURIComponent(k);
-		location.href="partnership${pageMaker.makeQuery(1)}&searchType="+searchType+"&keyword="+keyword;
+		location.href="review${pageMaker.makeQuery(1)}&searchType="+searchType+"&keyword="+keyword;
 	});
 	
 	//익스플로러에서 한글 검색 후 read로 넘어갈 때 인코딩 문제 아래와 같이 해결
@@ -256,7 +256,7 @@ $(function(){
 		var searchType = encodeURIComponent(s);
 		var k=$("input[name='keyword']").val();
 		var keyword = encodeURIComponent(k);
-		location.href="partnershipPwType${pageMaker.makeQuery(pageMaker.cri.page)}&searchType="+searchType+"&keyword="+keyword+"&bno="+bno;
+		location.href="reviewPwType${pageMaker.makeQuery(pageMaker.cri.page)}&searchType="+searchType+"&keyword="+keyword+"&bno="+bno;
 	});
 	
 	$("input[name='keyword']").val("");
@@ -312,14 +312,14 @@ $(function(){
 					</div>
 				</li>
 				<li>
-					<p>제 휴</p>
+					<p>Review</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
 							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
 							<li><a href="${pageContext.request.contextPath}/qna">Q&A</a></li>
-							<li><a href="${pageContext.request.contextPath}/review">Review</a></li>
+							<li><a href="${pageContext.request.contextPath}/partnership">제휴</a></li>
 						</ul>
 					</div>
 				</li>
@@ -327,7 +327,7 @@ $(function(){
 		</div>
 		<div class="contentWrap">
 			<div class="content_title">
-				<h2>제 휴</h2>
+				<h2>Review</h2>
 			</div>
 			<div class="content">
 				<div class="tableWrap">
@@ -354,7 +354,7 @@ $(function(){
 											<c:if test="${item.pwtype=='o'}">
 												<img class="lockImg" src="${pageContext.request.contextPath}/resources/images/lock1.png">
 											</c:if>
-											<a href="${pageContext.request.contextPath}/partnershipPwType${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${item.bno}">${item.title}</a>
+											<a href="${pageContext.request.contextPath}/reviewPwType${pageMaker.makeSearch(pageMaker.cri.page)}&bno=${item.bno}">${item.title}</a>
 										</td>
 									<td>${item.writer}</td>
 									<td>${item.state}</td>
@@ -365,7 +365,7 @@ $(function(){
 					    </c:otherwise> 
 					</c:choose>
 					</table>
-					<p class="writeBtn"><a href="${pageContext.request.contextPath}/partnershipRegister${pageMaker.makeSearch(pageMaker.cri.page)}">글쓰기</a></p>
+					<p class="writeBtn"><a href="${pageContext.request.contextPath}/reviewRegister${pageMaker.makeSearch(pageMaker.cri.page)}">글쓰기</a></p>
 					<div class="page">
 						<ul>
 							<c:if test="${pageMaker.prev}">

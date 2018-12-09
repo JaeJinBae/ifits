@@ -4,28 +4,28 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.webaid.domain.ReplyVO;
+import com.webaid.domain.PReplyVO;
 
 @Repository
-public class ReplyDaoImpl implements ReplyDao {
+public class PReplyDaoImpl implements PReplyDao {
 
-	private static final String namespace="com.webaid.mappers.ReplyMapper";
+	private static final String namespace="com.webaid.mappers.PReplyMapper";
 	
 	@Autowired
 	private SqlSession session;
 
 	@Override
-	public ReplyVO select(int bno) throws Exception {
+	public PReplyVO select(int bno) throws Exception {
 		return session.selectOne(namespace+".select",bno);
 	}
 
 	@Override
-	public void insert(ReplyVO vo) throws Exception {
+	public void insert(PReplyVO vo) throws Exception {
 		session.insert(namespace+".insert", vo);
 	}
 
 	@Override
-	public void update(ReplyVO vo) throws Exception {
+	public void update(PReplyVO vo) throws Exception {
 		session.update(namespace+".update", vo);
 	}
 

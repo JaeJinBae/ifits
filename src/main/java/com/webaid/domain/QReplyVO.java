@@ -2,14 +2,14 @@ package com.webaid.domain;
 
 import java.util.Date;
 
-public class ReplyVO {
+public class QReplyVO {
 	private int rno;
 	private int bno;
 	private String replytext;
 	private String replyer;
 	private Date regdate;	
 	
-	public ReplyVO() {
+	public QReplyVO() {
 		
 	}
 
