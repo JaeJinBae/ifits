@@ -88,8 +88,14 @@
 </script>
 <div class="headerWrap">
 	<div class="topMenu">
-		<a href="#none">로그인</a>
-		<a href="#none">회원가입</a>
+		<c:if test="${sessionScope.id != null}">
+			<a href="${pageContext.request.contextPath}/userInfo">${sessionScope.id}</a>
+			<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+		</c:if>
+		<c:if test="${sessionScope.id == null}">
+			<a href="${pageContext.request.contextPath}/login">로그인</a>
+			<a href="${pageContext.request.contextPath}/userSignIn">회원가입</a>
+		</c:if>
 	</div>
 	<div class="mainMenu">
 		<a href="${pageContext.request.contextPath}/"><img class="logo" src="${pageContext.request.contextPath}/resources/images/logo_test.png"></a>

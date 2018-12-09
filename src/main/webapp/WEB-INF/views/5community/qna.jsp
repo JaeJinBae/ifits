@@ -260,6 +260,31 @@ $(function(){
 	});
 	
 	$("input[name='keyword']").val("");
+	
+	 //loginChk
+    function loginCheck(url){
+    	$.ajax({
+    		url:"${pageContext.request.contextPath}/userLoginChk",
+    		type:"post",
+    		dataType:"text",
+    		success:function(json){
+    			console.log(json);
+    			if(json=="no"){
+    				alert("로그인 후 이용가능합니다.");
+    				return false;
+    			}else{
+    				location.href=url;
+    			}
+    		}
+    	})
+    }
+    
+    $(".writeBtn > a").click(function(e){
+    	e.preventDefault();
+    	var boardUrl=$(this).attr("href");
+    	loginCheck(boardUrl);
+    	return false;
+    }); 
 });
 </script>
 </head>

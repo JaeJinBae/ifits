@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Our Brand | 아이핏에스</title>
+<title>멤버쉽 | 아이핏에스</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/css/common.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,16 +112,120 @@
 	}
 	.content{
 		width:1024px;
-		height:600px;
+		margin:0 auto;
+		padding:60px 0;
+	}
+	.formWrap{
+		width:580px;
+		margin:0 auto;
+		text-align: center;
+	}
+	.formWrap > h2{
+		font-size: 23px;
+		margin-bottom:20px;
+	}
+	.formDiv{
+		width:100%;
+		margin:0 auto;
+		padding:20px 0;
+		border-top:2px solid lightgray;
+		border-bottom:2px solid lightgray;
+	}
+	.formDiv > table{
+		width:50%;
 		margin:0 auto;
 	}
+	.formDiv > table th{
+		font-size:15px;
+		text-align: left;
+		width:100px;
+	}
+	.formDiv > table td{
+		width:175px;
+	}
+	.formDiv > table td > input[name='name'], .formDiv > table td > input[name='id']{
+		background: #F3F3F3;
+	}
+	.formDiv > table td > input{
+		padding-left:3px;
+		border-radius:5px;
+		width:100%;
+	}
+	.warning{
+		color: blue;
+		margin-top:15px;
+	}
+	.submitDiv{
+		width:100%;
+		text-align: center;
+		margin-top:10px;
+	}
+	.submitDiv > button{
+		background: #5f5f5f;
+		color:#fff;
+		border:1px solid lightgray;
+		border-radius: 5px;
+		padding:3px 10px;
+		font-size:15px;
+	}
+	
 	footer{ 
 		width:100%;
 	}
 }
 </style>
 <script>
-
+$(function(){
+    $(window).scroll(function() {
+        var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
+        if(position>500){
+        	$(".quick").stop().animate({"top":position-350+"px"},1000);	
+        }
+        if(position<=500){
+        	$(".quick").stop().animate({"top":0+"px"},1000);
+        }
+    });
+    
+    $(".quick ul li:last-child a").click(function(){
+    	$("html").animate({scrollTop:"0"},500);
+    	return false;
+    });
+    
+    //id, pw check
+    function idpwCheck(id, pw){
+		if(id==""||pw==""){
+			alert("아이디와 비밀번호를 모두 입력하세요.");
+			return;
+		}
+		$.ajax({
+			url:"${pageContext.request.contextPath}/memberLoginCheck/"+id+"/"+pw,
+			type:"post",
+			dataType:"text",
+			success:function(json){
+				console.log(json);
+				
+				if(json!="ok"){
+					alert("아이디 또는 비밀번호를 다시 확인하세요.");
+					//location.href="${pageContext.request.contextPath}/login";
+					return false;
+				}else{
+					location.href="${pageContext.request.contextPath}/";
+				}
+			}
+		});
+	}
+	
+	$(".submitDiv > button").click(function(){
+		var id=$("input[name='id']").val();
+		var pw=$("input[name='pw']").val();
+		if(id==null||id==""||pw==null||pw==""){
+			alert("아이디와 비밀번호를 다시 확인하세요.");
+			return false;
+		}else{
+			idpwCheck(id, pw);
+		}
+	});
+});
 </script>
 </head>
 <body>
@@ -136,10 +240,11 @@
 			<ul>
 				<li class="mid_nav_first_li"><a href="${pageContext.request.contextPath}/"><img src="${pageContext.request.contextPath}/resources/images/homeBtnImg.png"></a></li>
 				<li>
-					<p>Community</p>
+					<p>Membership</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
+							<li><a href="${pageContext.request.contextPath}/ourbrand">Our Brand</a></li>
 							<li><a href="${pageContext.request.contextPath}/product">Product</a></li>
 							<li><a href="${pageContext.request.contextPath}/technique">Technique</a></li>
 							<li><a href="${pageContext.request.contextPath}/information">Information</a></li>
@@ -148,7 +253,7 @@
 					</div>
 				</li>
 				<li>
-					<p>Review</p>
+					<p>회원정보</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
@@ -163,8 +268,42 @@
 		</div>
 		<div class="contentWrap">
 			<div class="content">
-				
-			</div>
+				<div class="formWrap"> 
+				<h2>'${vo.name}'님의 정보를 확인 및 수정할 수 있습니다.</h2>
+				<div class="formDiv">
+					<table>
+						<tr>
+							<th>- 이름</th>
+							<td><input type="text" name="name" value="${vo.name}" readonly></td>
+						</tr>
+						<tr>
+							<th>- 아이디</th>
+							<td><input type="text" name="id" value="${vo.id}" readonly></td>
+						</tr>
+						<tr>
+							<th>- 비밀번호</th>
+							<td><input type="password" name="pw"></td>
+						</tr>
+						<tr>
+							<th>- 비밀번호확인</th>
+							<td><input type="password" name="pw"></td>
+						</tr>
+						<tr>
+							<th>- 이메일</th>
+							<td><input type="text" name="mail" value="${vo.mail}"></td>
+						</tr>
+					</table>
+					<p class="warning">
+						※비밀번호 분실 시 입력한 이메일로 정보가 발송되오니 정확하게 입력해주세요.※
+					</p>
+				</div>
+				<div class="submitDiv">
+					<!-- <input type="submit" value="로그인"> -->
+					<button>저장</button>
+					<button>회원탈퇴</button>
+				</div>
+			</div><!-- formWrap end -->
+			</div><!-- content end -->
 		</div>
 	</section>
 	<footer>
