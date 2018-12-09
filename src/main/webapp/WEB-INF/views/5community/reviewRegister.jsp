@@ -278,7 +278,7 @@ $(function(){
 			</div>
 			<div class="content">
 				<div class="tableWrap">
-					<form id="f1" method="post" action="qnaRegister">
+					<form id="f1" method="post" action="reviewRegister">
 						<table>
 							<tr>
 								<td><span class="star">*</span> 공개여부<span class="stick">|</span></td>
