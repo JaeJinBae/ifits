@@ -14,9 +14,9 @@
 @media only screen and (min-width:1024px){
 	.headerWrap{
 		width:100%;
-		background: #fff;
+		background: #fff; 
 		padding-bottom:10px;
-		height:120px;
+		height:136px;
 	}
 	.topMenu{
 		width: 1100px;
@@ -48,7 +48,7 @@
 		/* display:inline-block; */
 		float:left;
 		margin:0 15px; 
-		line-height: 81px;
+		line-height: 97px;
 	}
 	.mainUlWrap > ul > li > a{
 		font-size:22px;
@@ -98,7 +98,7 @@
 		</c:if>
 	</div>
 	<div class="mainMenu">
-		<a href="${pageContext.request.contextPath}/"><img class="logo" src="${pageContext.request.contextPath}/resources/images/logo_test.png"></a>
+		<a href="${pageContext.request.contextPath}/"><img class="logo" src="${pageContext.request.contextPath}/resources/images/logo_test3.png"></a>
 		<div class="mainUlWrap">
 			<ul>
 				<li><a href="${pageContext.request.contextPath}/ourbrand">Our brand</a></li>

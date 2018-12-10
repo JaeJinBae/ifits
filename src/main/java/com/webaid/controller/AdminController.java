@@ -31,7 +31,9 @@ import com.webaid.domain.FaqVO;
 import com.webaid.domain.InformationVO;
 import com.webaid.domain.MemberVO;
 import com.webaid.domain.NoticeVO;
+import com.webaid.domain.PReplyVO;
 import com.webaid.domain.PageMaker;
+import com.webaid.domain.PartnershipVO;
 import com.webaid.domain.QReplyVO;
 import com.webaid.domain.QnaVO;
 import com.webaid.domain.RReplyVO;
@@ -1027,6 +1029,210 @@ public class AdminController {
 		return "redirect:/admin/adminReviewRead" + pageMaker.makeSearch(cri.getPage()) + "&bno=" + bno;
 	}
 	
+	//partnership
+	@RequestMapping(value = "/adminPartnership", method = RequestMethod.GET)
+	public String Partnership(@ModelAttribute("cri") SearchCriteria cri, Model model, HttpServletRequest req)
+			throws Exception {
+		logger.info("Partnership get");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+
+		List<PartnershipVO> list = pService.listSearch(cri);
+
+		cri.setKeyword(null);
+		cri.setSearchType("n");
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+
+		model.addAttribute("list", list);
+		model.addAttribute("pageMaker", pageMaker);
+
+		return "admin/adminPartnership";
+	}
+
+	@RequestMapping(value = "/adminPartnershipRead", method = RequestMethod.GET)
+	public String adminPartnershipRead(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req) throws Exception {
+		logger.info("admin Partnership Read Get");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+		
+		pService.updateCnt(bno);
+		
+		PartnershipVO vo = pService.selectOne(bno);
+		PReplyVO rvo = pReplyService.select(bno);
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+
+		model.addAttribute("item", vo);
+		model.addAttribute("reply", rvo);
+		model.addAttribute("pageMaker", pageMaker);
+		return "admin/adminPartnershipRead";
+	}
+
+	@RequestMapping(value = "/adminPartnershipAddReply", method = RequestMethod.POST)
+	public String adminPartnershipAddReply(PReplyVO vo, HttpServletRequest req) throws Exception {
+		logger.info("admin Partnership AddReply POSt");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+
+		pReplyService.insert(vo);
+
+		return "redirect:/admin/adminPartnership";
+	}
+
+	@RequestMapping(value = "/adminPartnershipUpdate", method = RequestMethod.GET)
+	public String adminPartnershipUpdateGet(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req) throws Exception {
+		logger.info("admin Partnership Update Get");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+
+		PartnershipVO vo = pService.selectOne(bno);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+
+		model.addAttribute("item", vo);
+		model.addAttribute("pageMaker", pageMaker);
+
+		return "admin/adminPartnershipUpdate";
+	}
+
+	@RequestMapping(value = "/adminPartnershipUpdate", method = RequestMethod.POST)
+	public String adminPartnershipUpdatePost(PartnershipVO vo, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req) throws Exception {
+		logger.info("admin Partnership Post");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+
+		pService.update(vo);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+
+		return "redirect:/admin/adminPartnershipRead" + pageMaker.makeSearch(cri.getPage()) + "&bno=" + vo.getBno();
+	}
+
+	@RequestMapping(value = "/adminPartnershipDelete")
+	public String adminPartnershipDelete(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req) throws Exception {
+		logger.info("admin Partnership Delete");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+
+		pService.delete(bno);
+		pReplyService.delete(bno);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+
+		return "redirect:/admin/adminPartnership" + pageMaker.makeSearch(cri.getPage());
+	}
+
+	@RequestMapping(value = "/adminPartnershipReplyUpdate", method = RequestMethod.GET)
+	public String adminPartnershipReplyUpdateGet(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req) throws Exception {
+		logger.info("admin Partnership ReplyUpdate Get");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+
+		PReplyVO rvo = pReplyService.select(bno);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.makeSearch(cri.getPage());
+		pageMaker.setTotalCount(pService.listSearchCount(cri));
+
+		model.addAttribute("reply", rvo);
+		model.addAttribute("pageMaker", pageMaker);
+
+		return "admin/adminPartnershipReplyUpdate";
+	}
+
+	@RequestMapping(value = "/adminPartnershipReplyUpdate", method = RequestMethod.POST)
+	public String adminPartnershipReplyUpdatePost(PReplyVO vo, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req) throws Exception {
+		logger.info("admin Partnership Reply Update Post");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+
+		pReplyService.update(vo);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+
+		return "redirect:/admin/adminPartnershipRead" + pageMaker.makeSearch(cri.getPage()) + "&bno=" + vo.getBno();
+	}
+
+	@RequestMapping(value = "/adminPartnershipReplyDelete")
+	public String adminPartnershipReplyDelete(int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req) throws Exception {
+		logger.info("admin Partnership Reply Delete");
+
+		HttpSession session = req.getSession(false);
+
+		if (session.getAttribute("id") == null) {
+			logger.info("아이디는 null 입니다.");
+			return "admin/adminLogin";
+		}
+
+		pReplyService.delete(bno);
+		pService.updateStateWait(bno);
+
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(cri);
+
+		return "redirect:/admin/adminPartnershipRead" + pageMaker.makeSearch(cri.getPage()) + "&bno=" + bno;
+	}
 	
 	//회원관리
 	@RequestMapping(value="/member", method=RequestMethod.GET)
