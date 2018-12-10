@@ -44,7 +44,7 @@
 	.footer_mid > div{
 		float:left;
 		width:33%;
-		height:188px;
+		height:208px;
 		border-right:1px solid lightgray;
 		padding-left:35px;
 	}
@@ -120,6 +120,7 @@
 			<p>대표 : 김재등</p>
 			<p>사업자등록번호 : 348-31-00468</p>
 			<p><span class="addr_title">주소 :&nbsp;&nbsp;</span><span class="addr_txt">대구광역시 북구 구암로 51<br>(관음동, 청년 ICT창업성장센터)</span></p>
+			<p><a href="${pageContext.request.contextPath}/admin/adminLogin">[관리자 모드]</a></p>
 		</div>
 	</div>
 	<div class="footer_bottom">
