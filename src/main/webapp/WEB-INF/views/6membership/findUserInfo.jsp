@@ -23,18 +23,137 @@
 		width:100%;
 	}
 }
-@media only screen and (min-width:768px) and (max-width:1023px){
+@media only screen and (min-width:768px) and (max-width:1024px){
 	header{
 		width:100%;
 	}
 	section{
 		width:100%;
 	}
-	footer{
+	.section_top{
+		width:100%;
+		height:500px;
+		background: green;
+	}
+	.mid_nav_wrap{
+		width:100%;
+		height:61px;
+		background: #f1f1f1;
+		border-bottom:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul{
+		width:100%;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li{
+		float:left;
+		background: #fff;
+		line-height:60px;
+		border-left:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul > li:first-child{
+		width:60px;
+		text-align: center;
+	}
+	.mid_nav_wrap > ul > li:first-child > a > img{ 
+		width:30px;
+		margin-top:18px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li){
+		width:210px;
+		font-size:20px;
+		font-weight:600;
+		border-right:1px solid lightgray;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > p{
+		float:left;
+		margin-left:20px;
+		font-size:20px;
+		font-weight:600;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > img{
+		width:26px;
+		float:right;
+		margin:22px 21px 0 0; 
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li):hover > .mid_sub_nav_wrap{ 
+		display:block; 
+	}
+	.mid_sub_nav_wrap{
+		display:none;
+		clear:both;
+		background: #fefefe;
+		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
+	}
+	.mid_sub_nav_wrap > ul > li{
+		padding-left:20px;
+		border-top:1px solid lightgray;
+	}
+	.mid_sub_nav_wrap > ul > li > a{
+		font-size:18px;
+	}
+	.contentWrap{
+		width:100%;
+		
+	}
+	.content{
+		width:100%;
+		margin:0 auto;
+		padding:60px 0;
+	}
+	.loginFormWrap{
+		width:600px;
+		margin:0 auto;
+	}
+	.loginFormWrap > h2{
+		font-size: 18px;
+		margin-bottom:20px;
+		text-align: center;
+	}
+	.loginFormWrap > .form{
+		width:100%;
+		margin:0 auto;
+		padding:20px 0;
+		border-top:2px solid lightgray;
+		border-bottom:2px solid lightgray;
+	}
+	.loginFormWrap > .form > table{
+		width:40%;
+		margin:0 auto;
+	}
+	.loginFormWrap > .form > table th{
+		font-size:14px;
+		width:60px;
+	}
+	.loginFormWrap > .form > table td{
+		width:175px;
+	}
+	.loginFormWrap > .form > table td > input{
+		width:100%;
+	}
+	.submitDiv{
+		width:100%;
+		text-align: center;
+		margin-top:10px;
+	}
+	.submitDiv > button{
+		background: #5f5f5f;
+		color:#fff;
+		border:1px solid lightgray;
+		border-radius: 5px;
+		padding:3px 10px;
+		font-size:15px;
+	}
+	
+	footer{ 
 		width:100%;
 	}
 }
-@media only screen and (min-width:1024px){
+@media only screen and (min-width:1025px){
 	header{
 		width:100%;
 	}

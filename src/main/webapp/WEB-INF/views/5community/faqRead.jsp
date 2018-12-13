@@ -23,18 +23,131 @@
 		width:100%;
 	}
 }
-@media only screen and (min-width:768px) and (max-width:1023px){
+@media only screen and (min-width:768px) and (max-width:1024px){
 	header{
 		width:100%;
 	}
 	section{
 		width:100%;
 	}
-	footer{
+	.section_top{
+		width:100%;
+		height:500px;
+		background: green;
+	}
+	.mid_nav_wrap{
+		width:100%;
+		height:61px;
+		background: #f1f1f1;
+		border-bottom:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul{
+		width:100%;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li{
+		float:left;
+		background: #fff;
+		line-height:60px;
+		border-left:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul > li:first-child{
+		width:60px;
+		text-align: center;
+	}
+	.mid_nav_wrap > ul > li:first-child > a > img{ 
+		width:30px;
+		margin-top:18px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li){
+		width:210px;
+		font-size:20px;
+		font-weight:600;
+		border-right:1px solid lightgray;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > p{
+		float:left;
+		margin-left:20px;
+		font-size:20px;
+		font-weight:600;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > img{
+		width:26px;
+		float:right;
+		margin:22px 21px 0 0; 
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li):hover > .mid_sub_nav_wrap{ 
+		display:block; 
+	}
+	.mid_sub_nav_wrap{
+		display:none; 
+		clear:both;
+		background: #fefefe;
+		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
+	}
+	.mid_sub_nav_wrap > ul > li{
+		padding-left:20px;
+		border-top:1px solid lightgray;
+	}
+	.mid_sub_nav_wrap > ul > li > a{
+		font-size:18px;
+	}
+	/* content */
+	.contentWrap{
+		width:100%;
+		padding:0 15px;
+	}
+	.content_title{
+		width:100%;
+		margin:20px auto;
+		padding:30px;
+		padding-left:5px;
+		border-bottom:2px solid #3e3e3e;
+	}
+	.content{
+		width:100%;
+		margin:0 auto;
+	}
+	.content > table{
+		width:100%;
+	}
+	.line{
+		border-top:1px solid lightgray;
+		border-bottom:2px solid #3e3e3e;
+	}
+	.line > td{
+		padding:20px;
+		font-size:16px;
+	}
+	.table_regdate{
+		margin:15px 0 10px 0;
+	}
+	.btnWrap{
+		width:100%;
+		margin: 0 auto;
+	}
+	.listBtn{
+		width:58px;
+		height:40px;
+		margin:20px auto;
+		line-height:36px;
+		border: 2px solid #747474;
+		text-align: center;
+		font-size:16px;
+	}
+	.listBtn > a{
+		width:100%;
+		height:100%;
+	}
+	footer{ 
 		width:100%;
 	}
 }
-@media only screen and (min-width:1024px){
+@media only screen and (min-width:1025px){
 	header{
 		width:100%;
 	}
@@ -200,10 +313,10 @@ $(function(){
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
+							<li><a href="${pageContext.request.contextPath}/ourbrand">Our Brand</a></li>
 							<li><a href="${pageContext.request.contextPath}/product">Product</a></li>
 							<li><a href="${pageContext.request.contextPath}/technique">Technique</a></li>
 							<li><a href="${pageContext.request.contextPath}/information">Information</a></li>
-							<li><a href="${pageContext.request.contextPath}/notice">Community</a></li>
 						</ul>
 					</div>
 				</li>

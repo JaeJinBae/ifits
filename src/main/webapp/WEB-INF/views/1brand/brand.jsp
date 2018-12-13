@@ -82,7 +82,7 @@
 	.mid_nav_wrap > ul > li:last-child:hover .mid_sub_nav_wrap{ 
 		display:block; 
 	}
-	.mid_sub_nav_wrap{ 
+	.mid_sub_nav_wrap{
 		display:none;
 		clear:both;
 		background: #fefefe;
@@ -99,7 +99,7 @@
 		font-size:18px;
 	}
 	.contentWrap{
-		 
+		
 	}
 	.content{
 		width:100%;
@@ -212,7 +212,7 @@
 	</header>
 	<section>
 		<div class="section_top">
-			<img src="${pageContext.request.contextPath}/resources/images/oubrand_test1.jpg">
+			<img src="${pageContext.request.contextPath}/resources/images/sub_oubrand_test1.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>
