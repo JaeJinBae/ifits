@@ -23,18 +23,7 @@
 		width:100%;
 	}
 }
-@media only screen and (min-width:768px) and (max-width:1023px){
-	header{
-		width:100%;
-	}
-	section{
-		width:100%;
-	}
-	footer{
-		width:100%;
-	}
-}
-@media only screen and (min-width:1024px){
+@media only screen and (min-width:768px) and (max-width:1024px){
 	header{
 		width:100%;
 	}
@@ -43,8 +32,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -53,7 +43,7 @@
 		border-bottom:1px solid lightgray;
 	}
 	.mid_nav_wrap > ul{
-		width:1024px;
+		width:100%;
 		margin:0 auto;
 		overflow:hidden;
 	}
@@ -92,11 +82,101 @@
 	.mid_nav_wrap > ul > li:last-child:hover .mid_sub_nav_wrap{ 
 		display:block; 
 	}
+	.mid_sub_nav_wrap{ 
+		display:none;
+		clear:both;
+		background: #fefefe;
+		border:1px solid lightgray;
+		border-top:0;
+		position: relative;
+		z-index: 9;
+	}
+	.mid_sub_nav_wrap > ul > li{
+		padding-left:20px;
+		border-top:1px solid lightgray;
+	}
+	.mid_sub_nav_wrap > ul > li > a{
+		font-size:18px;
+	}
+	.contentWrap{
+		 
+	}
+	.content{
+		width:100%;
+		margin:0 auto;
+	}
+	.content > img{
+		width:100%;
+	}
+	footer{ 
+		width:100%;
+	}
+}
+@media only screen and (min-width:1025px){
+	header{
+		width:100%;
+	}
+	section{
+		width:100%;
+	}
+	.section_top{
+		width:100%;
+	}
+	.section_top > img{
+		width:100%;
+	}
+	.mid_nav_wrap{
+		width:100%;
+		height:61px;
+		background: #f1f1f1;
+		border-bottom:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul{
+		width:1024px;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li{
+		float:left;
+		background: #fff;
+		line-height:60px;
+		border-left:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul > li:first-child{
+		width:60px;
+		text-align: center;
+	}
+	.mid_nav_wrap > ul > li:first-child > a > img{ 
+		width:30px;
+		margin-top:18px;
+	}
+	.mid_nav_wrap > ul > li:last-child{
+		width:210px;
+		font-size:20px;
+		font-weight:600; 
+		border-right:1px solid lightgray;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li:last-child > p{
+		float:left;
+		margin-left:20px;
+		font-size:20px;
+		font-weight:600;
+	}
+	.mid_nav_wrap > ul > li:last-child > img{
+		width:26px;
+		float:right;
+		margin:22px 21px 0 0; 
+	} 
+	.mid_nav_wrap > ul > li:last-child:hover .mid_sub_nav_wrap{ 
+		display:block; 
+	}
 	.mid_sub_nav_wrap{
 		display:none;
 		clear:both;
 		background: #fefefe;
-		border-bottom:1px solid lightgray;
+		border:1px solid lightgray;
+		border-top:0;
 		position: relative;
 		z-index: 9;
 	}
@@ -112,8 +192,10 @@
 	}
 	.content{
 		width:1024px;
-		height:600px;
 		margin:0 auto;
+	}
+	.content > img{
+		width:100%;
 	}
 	footer{ 
 		width:100%;
@@ -130,7 +212,7 @@
 	</header>
 	<section>
 		<div class="section_top">
-			
+			<img src="${pageContext.request.contextPath}/resources/images/oubrand_test1.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>
@@ -151,7 +233,7 @@
 		</div>
 		<div class="contentWrap">
 			<div class="content">
-				
+				<img src="${pageContext.request.contextPath}/resources/images/pc_menu01_test2.jpg">
 			</div>
 		</div>
 	</section>

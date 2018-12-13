@@ -8,10 +8,82 @@
 @media only screen and (min-width:320px) and (max-width:767px){
 	
 }
-@media only screen and (min-width:768px) and (max-width:1023px){
-	
+@media only screen and (min-width:768px) and (max-width:1024px){
+	.headerWrap{
+		width:100%;
+		background: #fff; 
+		padding-bottom:10px;
+		height:120px;
+	}
+	.topMenu{
+		width: 100%;
+		margin: 0 auto;
+		text-align: right;
+		padding:10px 20px;
+		padding-bottom:0;
+	}
+	.topMenu > a{
+		font-size:14px;
+		margin-left:10px;
+	}
+	.mainMenu{
+		width:100%;
+		margin: 0 auto;
+		overflow: hidden;
+		padding:0 7px;
+	}
+	.mainMenu > a{
+		float:left;
+		width:180px;
+	}
+	.logo{
+		width:100%;
+	}
+	.mainUlWrap{
+		float:right;
+	}
+	.mainUlWrap > ul{
+		width:100%;
+		overflow:hidden;
+	}
+	.mainUlWrap > ul > li{
+		/* display:inline-block; */
+		float:left;
+		margin:0 8px; 
+		line-height: 80px;
+	}
+	.mainUlWrap > ul > li > a{
+		font-size:19px;
+		font-weight:600;
+	}
+	.mainUlWrap > ul > li:hover > a{
+		text-decoration: none;
+		color: #3075ba; /*마우스오버시 자연스럽게*/
+		transition-duration: 300ms;
+		transition-property: color, border-color, background-color;
+		transition-timing-function: ease;
+	}
+	.mainUlWrap > ul > li:last-child:hover > .subUlWrap{
+		display:block; 
+		transition-duration: 300ms;
+		transition-property: display;
+		transition-timing-function: ease;
+	} 
+	.subUlWrap{ 
+		display:none;
+		background: #fff;
+		opacity: 0.8;
+		margin-top:10px;
+	}
+	.subUlWrap > ul > li {
+		text-align: center;
+		line-height: 37px;
+	}
+	.subUlWrap > ul > li > a {
+		font-size:17px;
+	}
 }
-@media only screen and (min-width:1024px){
+@media only screen and (min-width:1025px){
 	.headerWrap{
 		width:100%;
 		background: #fff; 
