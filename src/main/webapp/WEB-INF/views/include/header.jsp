@@ -6,9 +6,17 @@
 <!DOCTYPE html>
 <style>
 @media only screen and (min-width:320px) and (max-width:767px){
-	
+	.headerWrap{
+		display: none;
+	}
+	.mHeader{
+		width:100%;
+	}
 }
 @media only screen and (min-width:768px) and (max-width:1024px){
+	.mHeader{
+		display:none;
+	}
 	.headerWrap{
 		width:100%;
 		background: #fff; 
@@ -84,6 +92,9 @@
 	}
 }
 @media only screen and (min-width:1025px){
+	.mHeader{
+		display:none;
+	}
 	.headerWrap{
 		width:100%;
 		background: #fff; 
@@ -189,10 +200,10 @@
 						</ul>
 					</div>
 				</li>
-				<%-- <li>
-					<img src="${pageContext.request.contextPath}/resources/images/info_icon.png">
-				</li> --%>
 			</ul>
 		</div>
 	</div>
+</div>
+<div class="mHeader">
+	<jsp:include page="mHeader.jsp"></jsp:include>
 </div>

@@ -15,6 +15,12 @@
 @media only screen and (min-width:320px) and (max-width:767px){
 	header{
 		width:100%;
+		position: fixed;
+		top:0;
+		background: #fff;
+	}
+	section{
+		padding-top:126px;
 	}
 }
 @media only screen and (min-width:768px) and (max-width:1024px){
@@ -189,7 +195,7 @@
 	
 </script>
 </head>
-<body>
+<body id="main">
 	<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>

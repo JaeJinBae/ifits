@@ -160,8 +160,8 @@
 <div class="footerWrap">
 	<div class="footer_top">
 		<a href="${pageContext.request.contextPath}/ourbrand">Company</a>
-		<a href="#none">Agreement</a>
-		<a href="#none">Privacy policy</a>
+		<a href="${pageContext.request.contextPath}/agreement">Agreement</a>
+		<a href="${pageContext.request.contextPath}/privacyPolicy">Privacy policy</a>
 		<a href="${pageContext.request.contextPath}/product">Product</a>
 		<a href="${pageContext.request.contextPath}/technique">Technique</a>
 	</div>

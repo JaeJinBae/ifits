@@ -100,7 +100,7 @@ public class HomeController {
 	}
 	
 	//========================== member login ===============================
-	
+	//membership
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String loginGet(Model model, HttpServletRequest req) throws UnsupportedEncodingException {
 		logger.info("login Get");	
@@ -327,12 +327,25 @@ public class HomeController {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping(value = "/agreement", method = RequestMethod.GET)
+	public String agreement() {
+		logger.info("agreement GET");
+		
+		return "6membership/agreement";
+	}
+	
+	@RequestMapping(value = "/privacyPolicy", method = RequestMethod.GET)
+	public String privacyPolicy() {
+		logger.info("privacyPolicy GET");
+		
+		return "6membership/privacyPolicy";
+	}
 		
 			
 	@RequestMapping(value = "/ourbrand", method = RequestMethod.GET)
 	public String brand() {
 		logger.info("our brand GET");
-		
 		
 		return "1brand/brand";
 	}
@@ -340,16 +353,14 @@ public class HomeController {
 	@RequestMapping(value = "/product", method = RequestMethod.GET)
 	public String product() {
 		logger.info("product GET");
-		
-		
+				
 		return "2product/product";
 	}
 	
 	@RequestMapping(value = "/technique", method = RequestMethod.GET)
 	public String technique() {
 		logger.info("technique GET");
-		
-		
+				
 		return "3technique/technique";
 	}
 	
@@ -579,8 +590,7 @@ public class HomeController {
 		pageMaker.setTotalCount(qService.listSearchCount(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
-		
-		
+				
 		model.addAttribute("item",vo);
 		model.addAttribute("reply", rvo);
 		
@@ -599,8 +609,7 @@ public class HomeController {
 		pageMaker.makeSearch(cri.getPage());
 		pageMaker.setTotalCount(qService.listSearchCount(cri));
 		
-		
-		model.addAttribute("item",vo);
+				model.addAttribute("item",vo);
 		model.addAttribute("pageMaker", pageMaker);
 		
 		return "5community/qnaUpdate";
@@ -729,7 +738,6 @@ public class HomeController {
 		}catch (Exception e) {
 			e.printStackTrace();
 			entity=new ResponseEntity<String>("no",HttpStatus.BAD_REQUEST);
-			
 		}
 		
 		return entity;
@@ -752,8 +760,7 @@ public class HomeController {
 		pageMaker.setTotalCount(rService.listSearchCount(cri));
 		
 		model.addAttribute("pageMaker", pageMaker);
-		
-		
+				
 		model.addAttribute("item",vo);
 		model.addAttribute("reply", rvo);
 		
@@ -771,8 +778,7 @@ public class HomeController {
 		pageMaker.setCri(cri);
 		pageMaker.makeSearch(cri.getPage());
 		pageMaker.setTotalCount(rService.listSearchCount(cri));
-		
-		
+				
 		model.addAttribute("item",vo);
 		model.addAttribute("pageMaker", pageMaker);
 		

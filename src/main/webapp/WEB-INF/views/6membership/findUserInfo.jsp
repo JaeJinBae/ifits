@@ -372,10 +372,10 @@ $(function(){
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
-							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>
-							<li><a href="${pageContext.request.contextPath}/qna">Q&A</a></li>
-							<li><a href="${pageContext.request.contextPath}/partnership">제휴</a></li>
+							<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
+							<li><a href="${pageContext.request.contextPath}/userSignIn">회원가입</a></li>
+							<li><a href="${pageContext.request.contextPath}/agreement">이용약관</a></li>
+							<li><a href="${pageContext.request.contextPath}/privacyPolicy">개인정보취급방침</a></li>
 						</ul>
 					</div>
 				</li>

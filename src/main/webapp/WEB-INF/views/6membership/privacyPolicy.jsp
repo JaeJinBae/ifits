@@ -40,7 +40,7 @@
 		height:61px;
 		background: #f1f1f1;
 		border-bottom:1px solid lightgray;
-	} 
+	}
 	.mid_nav_wrap > ul{
 		width:100%;
 		margin:0 auto;
@@ -97,77 +97,15 @@
 		font-size:18px;
 	}
 	.contentWrap{
+		width:100%;
 		
 	}
 	.content{
 		width:100%;
 		margin:0 auto;
-	}
-	.loginFormWrap{
-		width:600px;
-		margin:0 auto;
 		padding:60px 0;
 	}
-	.loginFormWrap > h2{
-		font-size: 23px;
-		margin-bottom:20px;
-		text-align: center;
-	}
-	.loginFormWrap > .form{
-		width:100%;
-		margin:0 auto;
-		padding:20px 0;
-		border-top:2px solid lightgray;
-		border-bottom:2px solid lightgray;
-	}
-	.loginFormWrap > .form > table{
-		width:40%;
-		margin:0 auto;
-	}
-	.loginFormWrap > .form > table th{
-		font-size:14px;
-		width:60px;
-	}
-	.loginFormWrap > .form > table td{
-		width:175px;
-	}
-	.loginFormWrap > .form > table td > input{
-		width:100%;
-	}
-	.submitDiv{
-		width:100%;
-		text-align: center;
-		margin-top:10px;
-	}
-	.submitDiv > button{
-		background: #5f5f5f;
-		color:#fff;
-		border:1px solid lightgray;
-		border-radius: 5px;
-		padding:3px 10px;
-		font-size:15px;
-	}
-	.signInWrap{
-		width:100%;
-		margin-top:20px;
-	}
-	.signIn{
-		width:60%;
-		margin: 0 auto;
-		overflow:hidden;
-	}
-	.signIn > p{
-		float:left;
-		width:60%;
-		font-size:14px;
-	}
-	.signIn > a {
-		float:left;
-		font-size:14px;
-	}
-	.signIn > a:hover{
-		color: #0561fa;
-	}
+	
 	
 	footer{ 
 		width:100%;
@@ -252,72 +190,9 @@
 	.content{
 		width:1024px;
 		margin:0 auto;
-	}
-	.loginFormWrap{
-		width:600px;
-		margin:0 auto;
 		padding:60px 0;
 	}
-	.loginFormWrap > h2{
-		font-size: 23px;
-		margin-bottom:20px;
-		text-align: center;
-	}
-	.loginFormWrap > .form{
-		width:100%;
-		margin:0 auto;
-		padding:20px 0;
-		border-top:2px solid lightgray;
-		border-bottom:2px solid lightgray;
-	}
-	.loginFormWrap > .form > table{
-		width:40%;
-		margin:0 auto;
-	}
-	.loginFormWrap > .form > table th{
-		font-size:14px;
-		width:60px;
-	}
-	.loginFormWrap > .form > table td{
-		width:175px;
-	}
-	.loginFormWrap > .form > table td > input{
-		width:100%;
-	}
-	.submitDiv{
-		width:100%;
-		text-align: center;
-		margin-top:10px;
-	}
-	.submitDiv > button{
-		background: #5f5f5f;
-		color:#fff;
-		border:1px solid lightgray;
-		border-radius: 5px;
-		padding:3px 10px;
-		font-size:15px;
-	}
-	.signInWrap{
-		width:100%;
-		margin-top:20px;
-	}
-	.signIn{
-		width:60%;
-		margin: 0 auto;
-		overflow:hidden;
-	}
-	.signIn > p{
-		float:left;
-		width:60%;
-		font-size:14px;
-	}
-	.signIn > a {
-		float:left;
-		font-size:14px;
-	}
-	.signIn > a:hover{
-		color: #0561fa;
-	}
+	
 	
 	footer{ 
 		width:100%;
@@ -325,56 +200,8 @@
 }
 </style>
 <script>
-$(function(){
-    $(window).scroll(function() {
-        var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-        if(position>500){
-        	$(".quick").stop().animate({"top":position-350+"px"},1000);	
-        }
-        if(position<=500){
-        	$(".quick").stop().animate({"top":0+"px"},1000);
-        }
-    });
-    
-    $(".quick ul li:last-child a").click(function(){
-    	$("html").animate({scrollTop:"0"},500);
-    	return false;
-    });
-    
-    //id, pw check
-    function idpwCheck(id, pw){
-		if(id==""||pw==""){
-			alert("아이디와 비밀번호를 모두 입력하세요.");
-			return;
-		}
-		$.ajax({
-			url:"${pageContext.request.contextPath}/memberLoginCheck/"+id+"/"+pw,
-			type:"post",
-			dataType:"text",
-			success:function(json){
-				console.log(json);
-				
-				if(json!="ok"){
-					alert("아이디 또는 비밀번호를 다시 확인하세요.");
-					//location.href="${pageContext.request.contextPath}/login";
-					return false;
-				}else{
-					location.href="${pageContext.request.contextPath}/";
-				}
-			}
-		});
-	}
-	
-	$(".submitDiv > button").click(function(){
-		var id=$("input[name='id']").val();
-		var pw=$("input[name='pw']").val();
-		if(id==null||id==""||pw==null||pw==""){
-			alert("아이디와 비밀번호를 다시 확인하세요.");
-			return false;
-		}else{
-			idpwCheck(id, pw);
-		}
-	});
+$(function(){   
+   
 });
 </script>
 </head>
@@ -403,14 +230,19 @@ $(function(){
 					</div>
 				</li>
 				<li>
-					<p>Login</p>
+					<p>개인정보취급방침</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
 					<div class="mid_sub_nav_wrap">
 						<ul>
-							<li><a href="${pageContext.request.contextPath}/userSignIn">회원가입</a></li>
-							<li><a href="${pageContext.request.contextPath}/userFindInfo">회원정보찾기</a></li>
+							<c:if test="${sessionScope.id == null}">
+								<li><a href="${pageContext.request.contextPath}/login">로그인</a></li>
+								<li><a href="${pageContext.request.contextPath}/userSignIn">회원가입</a></li>
+								<li><a href="${pageContext.request.contextPath}/userFindInfo">회원정보찾기</a></li>
+							</c:if>
+							<c:if test="${sessionScope.id != null}">
+								<li><a href="${pageContext.request.contextPath}/userInfo">회원정보</a></li>
+							</c:if>
 							<li><a href="${pageContext.request.contextPath}/agreement">이용약관</a></li>
-							<li><a href="${pageContext.request.contextPath}/privacyPolicy">개인정보취급방침</a></li>
 						</ul>
 					</div>
 				</li>
@@ -418,30 +250,8 @@ $(function(){
 		</div>
 		<div class="contentWrap">
 			<div class="content">
-				<div class="loginFormWrap"> 
-				<h2>회원서비스를 이용하기 위해서는 로그인이 필요합니다.</h2>
-				<div class="form">
-					<table>
-						<tr>
-							<th>아이디</th>
-							<td><input type="text" name="id"></td>
-						</tr>
-						<tr>
-							<th>비밀번호</th>
-							<td><input type="password" name="pw"></td>
-						</tr>
-					</table>
-					<div class="submitDiv">
-						<!-- <input type="submit" value="로그인"> -->
-						<button>로그인</button>
-					</div>
-				</div>
-				<div class="signInWrap">
-					<div class="signIn"><p>아직 회원이 아니십니까?</p><a href="${pageContext.request.contextPath}/userSignIn">회원가입</a></div>
-					<div class="signIn"><p>아이디/비밀번호를 잊으셨습니까?</p><a href="${pageContext.request.contextPath}/userFindInfo">아이디/비밀번호 찾기</a></div>
-				</div>
-			</div><!-- loginFormWrap end -->
-			</div>
+				
+			</div><!-- content end -->
 		</div>
 	</section>
 	<footer>
