@@ -8,6 +8,85 @@
 @media only screen and (min-width:320px) and (max-width:767px){
 	.footerWrap{
 		width:100%;
+		background: #fff;
+		padding-top:10px;
+	}
+	.footer_top{
+		width:100%;
+		margin:25px 0;
+		text-align: center;
+	}
+	.footer_top > a{
+		display:inline-block;
+		/* width: 125px; */
+		text-align:center;
+		font-size:14px;
+		font-family: sans-serif;
+		margin:0 2px;
+	}
+	.footer_mid{
+		width:100%;
+		margin:15px auto;
+		margin-top:10px;
+		overflow:hidden;
+	}
+	.footer_mid > div:not(.footer_mid_3){
+		float:left;
+		width:49%;
+		height:150px;
+		padding-left:20px;
+	}
+	.footer_mid > div > h4{
+		margin:15px 0 15px 0;
+		font-size:16px;
+		
+	}
+	.footer_mid > div > p{
+		font-size:14px;
+		margin-bottom:5px; 
+	}
+	.footer_mid_1{
+		border-right:1px solid lightgray;
+	}
+	.footer_mid_1 > p{
+		font-size:15px !important; 
+		margin:10px 0 !important;
+	}
+	.footer_mid_2 > #tel{
+		font-size:16px;
+		font-weight:600;
+	}
+	.footer_mid_3{
+		width:100%;
+		/* clear:both; */
+		overflow:hidden;
+		padding: 0 20px;
+	}
+	.footer_mid_3 > p{
+		float:left;
+	}
+	.footer_mid_3 > .footer_addr{
+		overflow:hidden;
+	}
+	.footer_mid_3 > .footer_addr > span {
+		float:left;
+	}
+	.addr_txt{
+		width:180px;
+	}
+	.footer_mid_3 > p{
+		margin-right:20px; 
+	}
+	.footer_mid_3 > p:last-child{
+		display:none;
+	}
+	.footer_bottom{
+		width:100%;
+		text-align: center;
+		margin:20px 0 9px 0;
+	}
+	.footer_bottom > p{
+		font-size:14px;
 	}
 }
 @media only screen and (min-width:768px) and (max-width:1024px){
@@ -183,7 +262,7 @@
 			<p>상호 : 아이핏S</p>
 			<p>대표 : 김재등</p>
 			<p>사업자등록번호 : 348-31-00468</p>
-			<p><span class="addr_title">주소 :&nbsp;&nbsp;</span><span class="addr_txt">대구광역시 북구 구암로 51<br>(관음동, 청년 ICT창업성장센터)</span></p>
+			<p class="footer_addr"><span class="addr_title">주소 :&nbsp;&nbsp;</span><span class="addr_txt">대구광역시 북구 구암로 51<br>(관음동, 청년 ICT창업성장센터)</span></p>
 			<p><a href="${pageContext.request.contextPath}/admin/adminLogin">[관리자 모드]</a></p>
 		</div>
 	</div>

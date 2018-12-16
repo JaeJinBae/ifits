@@ -20,7 +20,84 @@
 		background: #fff;
 	}
 	section{
-		padding-top:126px;
+		width:100%;
+		padding-top:88px;
+	}
+	.mainBanner{
+		width:100%;
+		height:300px;
+		background: green;
+	}
+	.product_section{
+		width:100%;
+		background: url("${pageContext.request.contextPath}/resources/images/test2.jpg") no-repeat;
+		background-size: cover;
+	} 
+	.product_contentWrap{
+		width:100%;
+		max-width:820px; 
+		margin:0 auto;
+		padding: 0 10px 40px 10px;
+	}
+	.product_content_txt{
+		width:100%;
+	}
+	.product_content_txt > h1{
+		padding:20px 0;
+		font-size:35px;
+		color: black;
+		font-family: sans-serif;
+	}
+	.numberUl > ul{
+		overflow:hidden;
+	}
+	.numberUl > ul > li{
+		float:left;
+		margin: 0 15px;
+		font-size:16px;
+		font-family: sans-serif;
+	}
+	.numberUl > ul > li:first-child{
+		font-weight:bold; 
+		border-bottom:3px solid black;
+	}
+	.product_content_txt > h2{
+		font-size:20px;
+		padding:20px 0;
+	}
+	.product_content_txt > ul{
+		padding-left:50px;
+	} 
+	.product_content_txt > ul > li{
+		list-style: disc;
+		font-size:15px;
+		margin:10px 0;
+	}
+	.moreBtn{
+		width:130px;
+		background: #4f4f4f;
+		text-align: center;
+		border-radius: 10px;
+		padding:10px 0;
+		margin-top:27px;
+		margin-left:30px;
+	}
+	.moreBtn > a{
+		color:#fff;
+		font-size:15px;
+	}
+	.moreBtn > a:hover{
+		font-weight:600;
+	}
+	.product_content_img{
+		width:100%;
+		margin-top:20px; 
+	}
+	.product_content_img > img{
+		width:100%;
+	}
+	footer{
+		border-top:1px solid lightgray;
 	}
 }
 @media only screen and (min-width:768px) and (max-width:1024px){
