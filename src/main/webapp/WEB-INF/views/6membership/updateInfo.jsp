@@ -19,7 +19,141 @@
 	section{
 		width:100%;
 	}
-	footer{
+	.section_top{
+		width:100%;
+	}
+	.section_top > img{
+		width:100%;
+	}
+	.mid_nav_wrap{
+		width:100%;
+		height:46px;
+		background: #f1f1f1;
+		border-bottom:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul{
+		width:100%;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li{
+		float:left;
+		background: #fff;
+		line-height:45px;
+		border-left:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul > li:first-child{
+		width:60px;
+		text-align: center;
+	}
+	.mid_nav_wrap > ul > li:first-child > a > img{ 
+		width:25px;
+		margin-top:12px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li){
+		font-size:16px;
+		font-weight:600;
+		border-right:1px solid lightgray; 
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li:last-child{
+		width:145px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > p{
+		float:left;
+		margin-left:20px;
+		font-size:15px;
+		font-weight:600;
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > img{
+		width:26px;
+		float:right;
+		margin:14px 9px 0 0;
+		margin-left:15px; 
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li):hover > .mid_sub_nav_wrap{ 
+		display:block; 
+	}
+	.mid_sub_nav_wrap{
+		display:none; 
+		clear:both;
+		background: #fefefe;
+		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
+	}
+	.mid_sub_nav_wrap > ul > li{
+		padding-left:20px;
+		border-top:1px solid lightgray;
+	}
+	.mid_sub_nav_wrap > ul > li > a{
+		font-size:15px;
+	}
+	.contentWrap{
+		width:100%;
+		padding:0 15px;
+	}
+	.content{
+		width:100;
+		margin:0 auto;
+		padding:60px 0;
+	}
+	.formWrap{
+		width:100%;
+		margin:0 auto;
+		text-align: center;
+	}
+	.formWrap > h2{
+		font-size: 18px;
+		margin-bottom:20px;
+		letter-spacing: -1px;
+	}
+	.formDiv{
+		width:100%;
+		margin:0 auto;
+		padding:20px 0;
+		border-top:2px solid lightgray;
+		border-bottom:2px solid lightgray;
+	}
+	.formDiv > table{
+		width:50%;
+		margin:0 auto;
+	}
+	.formDiv > table th{
+		font-size:15px;
+		text-align: left;
+		width:100px;
+	}
+	.formDiv > table td{
+		width:175px;
+	}
+	.formDiv > table td > input[name='name'], .formDiv > table td > input[name='id']{
+		background: #F3F3F3;
+	}
+	.formDiv > table td > input{
+		padding-left:3px;
+		border-radius:5px;
+		width:100%;
+	}
+	.warning{
+		color: blue;
+		margin-top:15px;
+	}
+	.submitDiv{
+		width:100%;
+		text-align: center;
+		margin-top:10px;
+	}
+	.submitDiv > button{
+		background: #5f5f5f;
+		color:#fff;
+		border:1px solid lightgray;
+		border-radius: 5px;
+		padding:3px 10px;
+		font-size:15px;
+	}
+	
+	footer{ 
 		width:100%;
 	}
 }

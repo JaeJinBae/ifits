@@ -19,7 +19,131 @@
 	section{
 		width:100%;
 	}
-	footer{
+	.section_top{
+		width:100%;
+	}
+	.section_top > img{
+		width:100%;
+	}
+	.mid_nav_wrap{
+		width:100%;
+		height:47px;
+		background: #f1f1f1;
+		border-top:1px solid lightgray;
+		border-bottom:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul{
+		width:100%;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li{
+		float:left;
+		background: #fff;
+		line-height:45px;
+		border-left:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul > li:first-child{
+		width:60px;
+		text-align: center;
+	}
+	.mid_nav_wrap > ul > li:first-child > a > img{ 
+		width:25px;
+		margin-top:12px;
+	}
+	.mid_nav_wrap > ul > li:last-child{
+		width:160px;
+		font-size:15px;
+		font-weight:600;
+		border-right:1px solid lightgray;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li:last-child > p{
+		float:left;
+		margin-left:20px;
+		font-size:15px;
+		font-weight:600;
+	}
+	.mid_nav_wrap > ul > li:last-child > img{
+		width:26px;
+		float:right;
+		margin:14px 9px 0 0; 
+	} 
+	.mid_nav_wrap > ul > li:last-child:hover .mid_sub_nav_wrap{ 
+		display:block; 
+	}
+	.mid_sub_nav_wrap{
+		display:none;
+		clear:both;
+		background: #fefefe;
+		border:1px solid lightgray;
+		border-top:0;
+		position: relative;
+		z-index: 9;
+	}
+	.mid_sub_nav_wrap > ul > li{
+		padding-left:20px;
+		border-top:1px solid lightgray;
+	}
+	.mid_sub_nav_wrap > ul > li > a{
+		font-size:15px;
+	}
+	/* content */
+	.contentWrap{
+		width:100%;
+		padding:0 15px;
+	}
+	.content_title{
+		width:100%;
+		margin:10px auto;
+		padding:15px;
+		padding-left:5px;
+		border-bottom:2px solid #3e3e3e;
+	}
+	.content_title > h2{
+		font-size:20px;
+	}
+	.content{
+		width:100%;
+		margin:0 auto;
+	}
+	.content > table{
+		width:100%;
+	}
+	.tbl_title_td > h4{
+		font-size:16px;
+	}
+	.line{
+		border-top:1px solid lightgray;
+		border-bottom:2px solid #3e3e3e;
+	}
+	.line > td{
+		padding:20px;
+		font-size:16px;
+	}
+	.table_regdate{
+		margin:15px 0 10px 0;
+		font-weight: 500;
+	}
+	.btnWrap{
+		width:100%;
+		margin: 0 auto;
+	}
+	.listBtn{
+		width:58px;
+		height:35px;
+		margin:20px auto;
+		line-height:36px;
+		background: #5f5f5f;
+		text-align: center;
+		font-size:16px;
+	}
+	.listBtn > a{
+		width:100%;
+		height:100%;
+		color:#fff;
+	}
+	footer{ 
 		width:100%;
 	}
 }
@@ -330,7 +454,7 @@ $(function(){
 			<div class="content">
 				<table>
 					<tr>
-						<td><h4 class="pl20 pr20">제목 : ${item.title}</h4></td>
+						<td class="tbl_title_td"><h4 class="pl20 pr20">제목 : ${item.title}</h4></td>
 					</tr>
 					<tr>
 						<td><h5 class="pl20 pr20 table_regdate">작성일 : <fmt:formatDate type="date" value="${item.regdate}"/></h5></td>

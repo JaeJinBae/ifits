@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <style>
 	.menuBg{display:none;position:fixed;top:0px;left:0px;background-color:rgba(0, 0, 0, 0.8);width:100%;height:100%;z-index:1;}
 	.headerWrap2{
@@ -196,8 +199,14 @@
 			<!-- <span>홈으로</span> -->
 		</a>
 		<div class="memberBtn">
+			<c:if test="${sessionScope.id != null}">
+			<a href="${pageContext.request.contextPath}/userInfo">${sessionScope.id}</a>
+			<a href="${pageContext.request.contextPath}/logout">로그아웃</a>
+		</c:if>
+		<c:if test="${sessionScope.id == null}">
 			<a href="${pageContext.request.contextPath}/login">로그인</a>
 			<a href="${pageContext.request.contextPath}/userSignIn">회원가입</a>
+		</c:if>
 		</div>
 		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 		<hr>

@@ -19,9 +19,139 @@
 	section{
 		width:100%;
 	}
-	footer{
+	.section_top{
 		width:100%;
 	}
+	.section_top > img{
+		width:100%;
+	}
+	.mid_nav_wrap{
+		width:100%;
+		height:46px;
+		background: #f1f1f1;
+		border-bottom:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul{
+		width:100%;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li{
+		float:left;
+		background: #fff;
+		line-height:45px;
+		border-left:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul > li:first-child{
+		width:60px;
+		text-align: center;
+	}
+	.mid_nav_wrap > ul > li:first-child > a > img{ 
+		width:25px;
+		margin-top:12px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li){
+		/* width:155px; */
+		font-size:16px;
+		font-weight:600;
+		border-right:1px solid lightgray; 
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > p{
+		float:left;
+		margin-left:20px;
+		font-size:15px;
+		font-weight:600;
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > img{
+		width:26px;
+		float:right;
+		margin:14px 9px 0 0;
+		margin-left:15px; 
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li):hover > .mid_sub_nav_wrap{ 
+		display:block; 
+	}
+	.mid_sub_nav_wrap{
+		display:none; 
+		clear:both;
+		background: #fefefe;
+		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
+	}
+	.mid_sub_nav_wrap > ul > li{
+		padding-left:20px;
+		border-top:1px solid lightgray;
+	}
+	.mid_sub_nav_wrap > ul > li > a{
+		font-size:15px;
+	}
+	/* content */
+	.contentWrap{
+		width:100%;
+		padding:0 15px;
+	}
+	.content_title{
+		width:100%;
+		margin:10px auto;
+		padding:15px;
+		padding-left:5px;
+		border-bottom:2px solid #3e3e3e;
+	}
+	.content_title > h2{
+		font-size:20px;
+	}
+	.content{
+		width:100%;
+		margin:0 auto;
+	}
+	.tableWrap{
+		width:100%;
+		margin:0 auto;
+	}
+	.tableWrap > table{
+		width:95%;
+		margin:0 auto;
+	}
+	.checkWrap{
+		width:100%;
+		margin:0 auto;
+		background: #f8f8f8;
+		padding:30px 15px;
+		margin-bottom:180px;
+		font-size:15px;
+	}
+	.checkWrap > p{
+		font-size:15px;
+	}
+	hr{
+		margin:15px 0;
+	}
+	.btnOK{
+		margin-left:10px;
+		width:38px;
+		height:24px;
+		background: #5f5f5f;
+		color:white;
+		border:none;
+		border-radius: 3px;
+		font-size:15px;
+	}
+	.checkWrap button:not(.btnOK){
+		width:65px;
+		height:24px;
+		background: #5f5f5f;
+		color:white;
+		border:none;
+		border-radius: 3px;
+		font-size:15px;
+	}
+	
+	footer{ 
+		width:100%;
+	}
+	
 }
 @media only screen and (min-width:768px) and (max-width:1024px){
 	header{

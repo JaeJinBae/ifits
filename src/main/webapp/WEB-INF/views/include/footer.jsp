@@ -13,7 +13,7 @@
 	}
 	.footer_top{
 		width:100%;
-		margin:25px 0;
+		margin:15px 0;
 		text-align: center;
 	}
 	.footer_top > a{

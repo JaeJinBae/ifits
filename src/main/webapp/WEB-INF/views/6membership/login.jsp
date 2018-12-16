@@ -19,7 +19,151 @@
 	section{
 		width:100%;
 	}
-	footer{
+	.section_top{
+		width:100%;
+	}
+	.section_top > img{
+		width:100%;
+	}
+	.mid_nav_wrap{
+		width:100%;
+		height:46px;
+		background: #f1f1f1;
+		border-bottom:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul{
+		width:100%;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li{
+		float:left;
+		background: #fff;
+		line-height:45px;
+		border-left:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul > li:first-child{
+		width:60px;
+		text-align: center;
+	}
+	.mid_nav_wrap > ul > li:first-child > a > img{ 
+		width:25px;
+		margin-top:12px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li){
+		font-size:16px;
+		font-weight:600;
+		border-right:1px solid lightgray; 
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li:last-child{
+		width:145px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > p{
+		float:left;
+		margin-left:20px;
+		font-size:15px;
+		font-weight:600;
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > img{
+		width:26px;
+		float:right;
+		margin:14px 9px 0 0;
+		margin-left:15px; 
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li):hover > .mid_sub_nav_wrap{ 
+		display:block; 
+	}
+	.mid_sub_nav_wrap{
+		display:none; 
+		clear:both;
+		background: #fefefe;
+		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
+	}
+	.mid_sub_nav_wrap > ul > li{
+		padding-left:20px;
+		border-top:1px solid lightgray;
+	}
+	.mid_sub_nav_wrap > ul > li > a{
+		font-size:15px;
+	}
+	/* content */
+	.contentWrap{
+		width:100%;
+	}
+	.content{
+		width:100%;
+		margin:0 auto;
+	}
+	.loginFormWrap{
+		width:93%;
+		margin:0 auto;
+		padding:60px 0;
+	}
+	.loginFormWrap > h2{
+		font-size: 18px;
+		margin-bottom:20px;
+		text-align: center;
+	}
+	.loginFormWrap > .form{
+		width:100%;
+		margin:0 auto;
+		padding:20px 0;
+		border-top:2px solid lightgray;
+		border-bottom:2px solid lightgray;
+	}
+	.loginFormWrap > .form > table{
+		width:65%;
+		margin:0 auto;
+	}
+	.loginFormWrap > .form > table th{
+		font-size:14px;
+		width:60px;
+	}
+	.loginFormWrap > .form > table td{
+		width:100%;
+	}
+	.loginFormWrap > .form > table td > input{
+		width:100%;
+	}
+	.submitDiv{
+		width:100%;
+		text-align: center;
+		margin-top:10px;
+	}
+	.submitDiv > button{
+		background: #5f5f5f;
+		color:#fff;
+		border:1px solid lightgray;
+		border-radius: 5px;
+		padding:3px 10px;
+		font-size:15px;
+	}
+	.signInWrap{
+		width:100%;
+		margin-top:20px;
+	}
+	.signIn{
+		width:98%;
+		margin: 0 auto;
+		overflow:hidden;
+	}
+	.signIn > p{
+		float:left;
+		width:60%;
+		font-size:14px;
+	}
+	.signIn > a {
+		float:left;
+		font-size:14px;
+	}
+	.signIn > a:hover{
+		color: #0561fa;
+	}
+	
+	footer{ 
 		width:100%;
 	}
 }
