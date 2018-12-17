@@ -644,19 +644,18 @@ $(function(){
 		else if(name == ""){
 			alert("이름을 입력하세요.");
 			return false;
-			
 		}else if(id==""){
 			alert("아이디를 입력해주세요.");
 			return false;
-			
-		}else if(pw != pwConfirm){
+		}else if(pw==""){
+			alert("비밀번호를 입력해주세요.");
+			return false;
+		}else if(pw != pwConfirm || pwConfirm ==""){
 			alert("비밀번호가 일치하지 않습니다.");
 			return false;
-			
 		}else if(mail == ""){
 			alert("이메일을 바르게 입력해주세요.");
 			return false;
-			
 		}else if(idChk == 0){
 			alert("아이디 중복확인을 해주세요.");
 			return false;
