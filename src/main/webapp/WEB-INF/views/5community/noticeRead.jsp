@@ -408,7 +408,7 @@ $(function(){
 	</header>
 	<section>
 		<div class="section_top">
-			<img src="${pageContext.request.contextPath}/resources/images/sub_community_test1.jpg">
+			<img src="${pageContext.request.contextPath}/resources/images/sub_community_test2.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>
