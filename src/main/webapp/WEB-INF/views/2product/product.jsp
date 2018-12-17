@@ -281,7 +281,7 @@
 
 </script>
 </head>
-<body>
+<body id="main">
 	<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>

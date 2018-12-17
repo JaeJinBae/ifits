@@ -176,8 +176,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -326,8 +327,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -522,13 +524,13 @@ $(function(){
 });
 </script>
 </head>
-<body>
+<body id="main">
 	<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>
 	<section>
 		<div class="section_top">
-			
+			<img src="${pageContext.request.contextPath}/resources/images/sub_membership_test1.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>

@@ -166,8 +166,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -306,8 +307,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -438,66 +440,64 @@
 }
 </style>
 <script>
-$(function(){
-    $(window).scroll(function() {
-        var position = $(window).scrollTop(); // 현재 스크롤바의 위치값을 반환합니다.
-        if(position>500){
-        	$(".quick").stop().animate({"top":position-350+"px"},1000);	
-        }
-        if(position<=500){
-        	$(".quick").stop().animate({"top":0+"px"},1000);
-        }
-    });
-    
-    $(".quick ul li:last-child a").click(function(){
-    	$("html").animate({scrollTop:"0"},500);
-    	return false;
-    });
-    
-    //id, pw check
-    function idpwCheck(id, pw){
-		if(id==""||pw==""){
-			alert("아이디와 비밀번호를 모두 입력하세요.");
-			return;
+$(function(){   
+  //id, pw check
+    function userUpdate(id, pw, mail){
+		if(pw==""){
+			pw="no";
 		}
+		/* alert("아이디: "+id+", 비번: "+pw+", 메일: "+mail); */
 		$.ajax({
-			url:"${pageContext.request.contextPath}/memberLoginCheck/"+id+"/"+pw,
+			url:"${pageContext.request.contextPath}/userUpdate/"+id+"/"+pw+"/"+mail,
 			type:"post",
 			dataType:"text",
 			success:function(json){
 				console.log(json);
 				
-				if(json!="ok"){
-					alert("아이디 또는 비밀번호를 다시 확인하세요.");
-					//location.href="${pageContext.request.contextPath}/login";
-					return false;
-				}else{
-					location.href="${pageContext.request.contextPath}/";
+				if(json =="ok"){
+					alert("정보가 변경되었습니다."); 
+					location.href="${pageContext.request.contextPath}/userInfo";
 				}
 			}
 		});
 	}
 	
-	$(".submitDiv > button").click(function(){
+	$(".submitDiv > button").eq(0).click(function(){
 		var id=$("input[name='id']").val();
-		var pw=$("input[name='pw']").val();
-		if(id==null||id==""||pw==null||pw==""){
-			alert("아이디와 비밀번호를 다시 확인하세요.");
+		var pw=$("input[name='pw']").eq(0).val(); 
+		var pwConfirm=$("input[name='pw']").eq(1).val();
+		var mail=$("input[name='mail']").val();
+		
+		if(pw != pwConfirm){
+			alert("비밀번호가 일치하지 않습니다.");
+			return false;
+		}else if(mail == ""){
+			alert("이메일을 바르게 입력해주세요.");
 			return false;
 		}else{
-			idpwCheck(id, pw);
+			userUpdate(id, pw, mail);
+		}
+	});
+	
+	$(".submitDiv > button").eq(1).click(function(){
+		var id=$("input[name='id']").val();
+		var delConfirm = confirm("회원탈퇴를 하시겠습니까?");
+		if(delConfirm==true){
+			location.href="${pageContext.request.contextPath}/delUser/"+id;
+		}else{
+			return false;
 		}
 	});
 });
 </script>
 </head>
-<body>
+<body id="main">
 	<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>
 	<section>
 		<div class="section_top">
-			
+			<img src="${pageContext.request.contextPath}/resources/images/sub_membership_test1.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>

@@ -155,8 +155,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -279,8 +280,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -426,7 +428,7 @@ $(function(){
 	</header>
 	<section>
 		<div class="section_top">
-			
+			<img src="${pageContext.request.contextPath}/resources/images/sub_community_test1.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>

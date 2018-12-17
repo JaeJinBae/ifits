@@ -19,8 +19,79 @@
 	section{
 		width:100%;
 	}
-	footer{
+	.section_top{
 		width:100%;
+	}
+	.section_top > img{
+		width:100%;
+	}
+	.mid_nav_wrap{
+		width:100%;
+		height:46px;
+		background: #f1f1f1;
+		border-bottom:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul{
+		width:100%;
+		margin:0 auto;
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li{
+		float:left;
+		background: #fff;
+		line-height:45px;
+		border-left:1px solid lightgray;
+	}
+	.mid_nav_wrap > ul > li:first-child{
+		width:60px;
+		text-align: center;
+	}
+	.mid_nav_wrap > ul > li:first-child > a > img{ 
+		width:25px;
+		margin-top:12px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li){
+		font-size:16px;
+		font-weight:600;
+		border-right:1px solid lightgray; 
+		overflow:hidden;
+	}
+	.mid_nav_wrap > ul > li:last-child{
+		width:145px;
+	}
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > p{
+		float:left;
+		margin-left:20px;
+		font-size:15px;
+		font-weight:600;
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > img{
+		width:26px;
+		float:right;
+		margin:14px 9px 0 0;
+		margin-left:15px; 
+	} 
+	.mid_nav_wrap > ul > li:not(.mid_nav_first_li):hover > .mid_sub_nav_wrap{ 
+		display:block; 
+	}
+	.mid_sub_nav_wrap{
+		display:none; 
+		clear:both;
+		background: #fefefe;
+		border-bottom:1px solid lightgray;
+		position: relative;
+		z-index: 9;
+	}
+	.mid_sub_nav_wrap > ul > li{
+		padding-left:20px;
+		border-top:1px solid lightgray;
+	}
+	.mid_sub_nav_wrap > ul > li > a{
+		font-size:15px;
+	}
+	.contentWrap{
+		width:100%;
+		padding:0 15px;
 	}
 }
 @media only screen and (min-width:768px) and (max-width:1024px){
@@ -32,8 +103,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -120,8 +192,9 @@
 	}
 	.section_top{
 		width:100%;
-		height:500px;
-		background: green;
+	}
+	.section_top > img{
+		width:100%;
 	}
 	.mid_nav_wrap{
 		width:100%;
@@ -205,13 +278,13 @@ $(function(){
 });
 </script>
 </head>
-<body>
+<body id="main">
 	<header>
 		<jsp:include page="../include/header.jsp"></jsp:include>
 	</header>
 	<section>
 		<div class="section_top">
-			
+			<img src="${pageContext.request.contextPath}/resources/images/sub_membership_test1.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>
