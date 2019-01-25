@@ -100,6 +100,7 @@
 		background: #fff; 
 		padding-bottom:10px;
 		height:136px;
+		box-shadow: 2px 2px gray;
 	}
 	.topMenu{
 		width: 1100px;

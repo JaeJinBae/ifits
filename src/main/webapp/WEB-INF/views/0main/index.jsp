@@ -193,8 +193,9 @@
 	}
 	.mainBanner{
 		width:100%;
-		height:700px;
-		background: green;
+	}
+	.mainBanner > img{
+		width:100%;
 	}
 	.product_section{
 		width:100%;
@@ -278,7 +279,7 @@
 	</header>
 	<section> 
 		<div class="mainBanner">
-		
+			<img src="${pageContext.request.contextPath}/resources/images/mainBanner.jpg">
 		</div>
 		<div class="product_section">
 			<div class="product_contentWrap">
