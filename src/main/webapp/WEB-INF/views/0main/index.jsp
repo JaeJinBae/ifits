@@ -302,7 +302,7 @@
 					<p class="moreBtn"><a href="${pageContext.request.contextPath}/product">제품 더 보기</a></p>
 				</div><!-- product_content_txt end -->
 				<div class="product_content_img">
-					<img src="${pageContext.request.contextPath}/resources/images/product_test_img2.jpg">
+					<img src="${pageContext.request.contextPath}/resources/images/main_product1.png">
 				</div><!-- product_content_img end -->
 			</div><!-- product_contentWrap end -->
 		</div><!-- product_section end -->

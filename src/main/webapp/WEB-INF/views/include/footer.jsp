@@ -161,7 +161,7 @@
 @media only screen and (min-width:1025px){
 	.footerWrap{
 		width:100%;
-		background: #fff;
+		background: #fafafa;
 		padding-top:10px;
 	}
 	.footer_top{

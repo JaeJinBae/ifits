@@ -265,17 +265,19 @@
 		font-size:18px;
 	}
 	.contentWrap{
-		
+		width:100%;
 	}
 	.content{
 		width:1024px;
-		height:600px;
 		margin:0 auto;
+	}
+	.content > img{
+		width:100%;
 	}
 	footer{ 
 		width:100%;
 	}
-}
+} 
 </style>
 <script>
 
@@ -308,7 +310,7 @@
 		</div>
 		<div class="contentWrap">
 			<div class="content">
-				
+				<img src="${pageContext.request.contextPath}/resources/images/pc_sub_product_content.jpg">
 			</div>
 		</div>
 	</section>
