@@ -25,8 +25,10 @@
 	}
 	.mainBanner{
 		width:100%;
-		height:300px;
 		background: green;
+	}
+	.mainBanner > img{
+		width:100%;
 	}
 	.product_section{
 		width:100%;
@@ -109,8 +111,10 @@
 	}
 	.mainBanner{
 		width:100%;
-		height:300px;
 		background: green;
+	}
+	.mainBanner > img{
+		width:100%;
 	}
 	.product_section{
 		width:100%;
@@ -187,6 +191,7 @@
 @media only screen and (min-width:1025px){
 	header{
 		width:100%;
+		box-shadow: 0 0px 5px 0px gray;
 	}
 	section{
 		width:100%;

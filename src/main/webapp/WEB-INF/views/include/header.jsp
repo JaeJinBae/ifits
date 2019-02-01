@@ -22,6 +22,7 @@
 		background: #fff; 
 		padding-bottom:10px;
 		height:120px;
+		border-bottom: 1px solid #e1e1e1;
 	}
 	.topMenu{
 		width: 100%;
@@ -79,8 +80,8 @@
 	} 
 	.subUlWrap{ 
 		display:none;
-		background: #fff;
-		opacity: 0.8;
+		background: #f9f9f9;
+		opacity: 0.9;
 		margin-top:10px;
 	}
 	.subUlWrap > ul > li {
@@ -100,7 +101,7 @@
 		background: #fff; 
 		padding-bottom:10px;
 		height:136px;
-		box-shadow: 2px 2px gray;
+		border-bottom: 1px solid #e1e1e1;
 	}
 	.topMenu{
 		width: 1100px;
@@ -153,14 +154,14 @@
 	} 
 	.subUlWrap{ 
 		display:none;
-		background: #fff;
-		opacity: 0.8;
+		background: #f9f9f9;
+		opacity: 0.9;
 		margin-top:10px;
 	}
 	.subUlWrap > ul > li {
 		text-align: center;
 		line-height: 37px;
-	}
+	} 
 	.subUlWrap > ul > li > a {
 		font-size:17px;
 	}

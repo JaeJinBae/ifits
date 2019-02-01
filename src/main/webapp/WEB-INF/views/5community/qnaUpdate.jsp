@@ -30,7 +30,7 @@
 		width:100%;
 		height:46px;
 		background: #f1f1f1;
-		border-bottom:1px solid lightgray;
+		border:1px solid lightgray;
 	}
 	.mid_nav_wrap > ul{
 		width:100%;
@@ -40,7 +40,7 @@
 	.mid_nav_wrap > ul > li{
 		float:left;
 		background: #fff;
-		line-height:45px;
+		line-height:44px;
 		border-left:1px solid lightgray;
 	}
 	.mid_nav_wrap > ul > li:first-child{
@@ -201,7 +201,7 @@
 		width:100%;
 		height:61px;
 		background: #f1f1f1;
-		border-bottom:1px solid lightgray;
+		border:1px solid lightgray;
 	}
 	.mid_nav_wrap > ul{
 		width:100%;
@@ -211,7 +211,7 @@
 	.mid_nav_wrap > ul > li{
 		float:left;
 		background: #fff;
-		line-height:60px;
+		line-height:59px;
 		border-left:1px solid lightgray;
 	}
 	.mid_nav_wrap > ul > li:first-child{
@@ -367,7 +367,7 @@
 		width:100%;
 		height:61px;
 		background: #f1f1f1;
-		border-bottom:1px solid lightgray;
+		border:1px solid lightgray;
 	}
 	.mid_nav_wrap > ul{
 		width:1024px;
@@ -377,7 +377,7 @@
 	.mid_nav_wrap > ul > li{
 		float:left;
 		background: #fff;
-		line-height:60px;
+		line-height:59px;
 		border-left:1px solid lightgray;
 	}
 	.mid_nav_wrap > ul > li:first-child{
@@ -388,11 +388,13 @@
 		width:30px;
 		margin-top:18px;
 	}
+	.mid_nav_wrap > ul > li:last-child{
+		border-right:1px solid lightgray;
+	}
 	.mid_nav_wrap > ul > li:not(.mid_nav_first_li){
 		width:210px;
 		font-size:20px;
 		font-weight:600;
-		border-right:1px solid lightgray;
 		overflow:hidden;
 	}
 	.mid_nav_wrap > ul > li:not(.mid_nav_first_li) > p{
@@ -410,7 +412,7 @@
 		display:block; 
 	}
 	.mid_sub_nav_wrap{
-		display:none;
+		display:none; 
 		clear:both;
 		background: #fefefe;
 		border-bottom:1px solid lightgray;
@@ -423,6 +425,9 @@
 	}
 	.mid_sub_nav_wrap > ul > li > a{
 		font-size:18px;
+	}
+	.sMenu1 > ul > li{
+		border-right:1px solid lightgray;
 	}
 	/* content */
 	.contentWrap{
@@ -536,7 +541,7 @@ $(function(){
 				<li>
 					<p>Community</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
-					<div class="mid_sub_nav_wrap">
+					<div class="mid_sub_nav_wrap sMenu1">
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/ourbrand">Our Brand</a></li>
 							<li><a href="${pageContext.request.contextPath}/product">Product</a></li>
@@ -548,7 +553,7 @@ $(function(){
 				<li>
 					<p>Q&A</p>
 					<img src="${pageContext.request.contextPath}/resources/images/arrow_down.png">
-					<div class="mid_sub_nav_wrap">
+					<div class="mid_sub_nav_wrap sMenu2">
 						<ul>
 							<li><a href="${pageContext.request.contextPath}/notice">공지사항</a></li>
 							<li><a href="${pageContext.request.contextPath}/faq">FAQ</a></li>

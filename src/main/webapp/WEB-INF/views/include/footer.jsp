@@ -8,7 +8,7 @@
 @media only screen and (min-width:320px) and (max-width:767px){
 	.footerWrap{
 		width:100%;
-		background: #fff;
+		background: #fafafa;
 		padding-top:10px;
 	}
 	.footer_top{
@@ -92,7 +92,7 @@
 @media only screen and (min-width:768px) and (max-width:1024px){
 	.footerWrap{
 		width:100%;
-		background: #fff;
+		background: #fafafa;
 		padding-top:10px;
 	}
 	.footer_top{
