@@ -13,6 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @media only screen and (min-width:320px) and (max-width:767px){
+	.pc_ver{
+		display:none;
+	}
 	header{
 		width:100%;
 		position: fixed;
@@ -189,6 +192,9 @@
 	}
 }
 @media only screen and (min-width:1025px){
+	.m_ver{
+		display:none;
+	}
 	header{
 		width:100%;
 		box-shadow: 0 0px 5px 0px gray;
@@ -284,7 +290,8 @@
 	</header>
 	<section> 
 		<div class="mainBanner">
-			<img src="${pageContext.request.contextPath}/resources/images/mainBanner.jpg">
+			<img class="pc_ver" src="${pageContext.request.contextPath}/resources/images/mainBanner.jpg">
+			<img class="m_ver" src="${pageContext.request.contextPath}/resources/images/mobile_mainBanner.jpg">
 		</div>
 		<div class="product_section">
 			<div class="product_contentWrap">
