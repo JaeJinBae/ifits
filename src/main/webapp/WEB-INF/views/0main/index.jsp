@@ -84,8 +84,8 @@
 		text-align: center;
 		border-radius: 10px;
 		padding:10px 0;
-		margin-top:27px;
-		margin-left:30px;
+		margin:0 auto;
+		margin-top:25px;
 	}
 	.moreBtn > a{
 		color:#fff;
@@ -273,7 +273,8 @@
 	.product_content_img{
 		width:500px;
 		float:right;
-		margin-top:80px; 
+		margin-top:80px;
+		border:1px solid #f4f4f4;
 	}
 	.product_content_img > img{
 		width:100%;
@@ -290,7 +291,7 @@
 	</header>
 	<section> 
 		<div class="mainBanner">
-			<img class="pc_ver" src="${pageContext.request.contextPath}/resources/images/mainBanner.jpg">
+			<img class="pc_ver" src="${pageContext.request.contextPath}/resources/images/pc_mainBanner.jpg">
 			<img class="m_ver" src="${pageContext.request.contextPath}/resources/images/mobile_mainBanner.jpg">
 		</div>
 		<div class="product_section">
@@ -300,15 +301,15 @@
 					<div class="numberUl">
 						<ul>
 							<li>01</li>
-							<li>02</li>
+							<!-- <li>02</li>
 							<li>03</li>
-							<li>04</li>
+							<li>04</li> -->
 						</ul>
 					</div>
-					<h2>건강을 지켜주는 의자 IFITS001</h2>
+					<h2>요통 예방 및 치료 기능성 의자</h2>
 					<ul>
 						<li>인체공학 디자인 및 설계</li>
-						<li>예방&치료 효과</li>
+						<li>요통 예방&치료 효과</li>
 						<li>현)물리치료실장 직접 설계</li>
 					</ul>
 					<p class="moreBtn"><a href="${pageContext.request.contextPath}/product">제품 더 보기</a></p>

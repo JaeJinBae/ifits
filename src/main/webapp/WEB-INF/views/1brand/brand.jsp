@@ -105,6 +105,9 @@
 	}
 }
 @media only screen and (min-width:768px) and (max-width:1024px){
+	.m_ver{
+		display:none;
+	}
 	header{
 		width:100%;
 	}
@@ -297,7 +300,7 @@
 	<section>
 		<div class="section_top">
 			<img class="pc_ver" src="${pageContext.request.contextPath}/resources/images/sub_ourbrand_top.jpg">
-			<img class="m_ver" src="${pageContext.request.contextPath}/resources/images/sub_ourbrand_top.jpg">
+			<img class="m_ver" src="${pageContext.request.contextPath}/resources/images/mobile_sub_ourbrand_top.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>
@@ -319,7 +322,7 @@
 		<div class="contentWrap">
 			<div class="content">
 				<img class="pc_ver" src="${pageContext.request.contextPath}/resources/images/pc_menu01_test2.jpg">
-				<img class="m_ver" src="${pageContext.request.contextPath}/resources/images/sub_ourbrand_top.jpg">
+				<img class="m_ver" src="${pageContext.request.contextPath}/resources/images/mobile_menu01.jpg">
 			</div>
 		</div>
 	</section>

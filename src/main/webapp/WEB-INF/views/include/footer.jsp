@@ -32,7 +32,7 @@
 	}
 	.footer_mid > div:not(.footer_mid_3){
 		float:left;
-		width:49%;
+		width:55%;
 		height:150px;
 		padding-left:20px;
 	}
@@ -47,10 +47,14 @@
 	}
 	.footer_mid_1{
 		border-right:1px solid lightgray;
+		width: 43% !important;
 	}
 	.footer_mid_1 > p{
 		font-size:15px !important; 
 		margin:10px 0 !important;
+	}
+	.bank_name{
+		display:block;
 	}
 	.footer_mid_2 > #tel{
 		font-size:16px;
@@ -247,7 +251,7 @@
 	<div class="footer_mid">
 		<div class="footer_mid_1">
 			<h4>Bank Info</h4>
-			<p>우리은행 1006-801-489176</p>
+			<p><span class="bank_name">우리은행</span> <span class="bank_info">1006-801-489176</span></p>
 			<p>예금주: 아이핏S</p>
 		</div>
 		<div class="footer_mid_2"> 

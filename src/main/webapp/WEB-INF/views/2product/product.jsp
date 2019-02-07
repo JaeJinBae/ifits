@@ -13,6 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 @media only screen and (min-width:320px) and (max-width:767px){
+	.pc_ver{
+		display:none;
+	}
 	header{
 		width:100%;
 	}
@@ -102,6 +105,9 @@
 	}
 }
 @media only screen and (min-width:768px) and (max-width:1024px){
+	.m_ver{
+		display:none;
+	}
 	header{
 		width:100%;
 	}
@@ -190,6 +196,9 @@
 	}
 }
 @media only screen and (min-width:1025px){
+	.m_ver{
+		display:none;
+	}
 	header{
 		width:100%;
 	}
@@ -290,7 +299,8 @@
 	</header>
 	<section>
 		<div class="section_top">
-			<img src="${pageContext.request.contextPath}/resources/images/sub_product_top.jpg"><!-- sub_product_test2.jpg -->
+			<img class="pc_ver" src="${pageContext.request.contextPath}/resources/images/sub_product_top.jpg">
+			<img class="m_ver" src="${pageContext.request.contextPath}/resources/images/mobile_sub_product_top.jpg">
 		</div>
 		<div class="mid_nav_wrap">
 			<ul>
@@ -311,7 +321,8 @@
 		</div>
 		<div class="contentWrap">
 			<div class="content">
-				<img src="${pageContext.request.contextPath}/resources/images/pc_sub_product_content.jpg">
+				<img class="pc_ver" src="${pageContext.request.contextPath}/resources/images/pc_sub_product_content.jpg">
+				<img class="m_ver" src="${pageContext.request.contextPath}/resources/images/mobile_sub_product_content.jpg">
 			</div>
 		</div>
 	</section>
